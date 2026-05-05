@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הורה ומיוחד + מימושים | הזכות שלך הכוח שלנו</title>
+    <meta name="description" content="עמותת הורה ומיוחד וחברת מימושים - ליווי מקצועי מלא למשפחות עם ילדים בעלי צרכים מיוחדים. מיצוי זכויות, קצבאות, ותמיכה קהילתית. שם בשבילם, תמיד!">
+    <meta name="keywords" content="הורה ומיוחד, מימושים, מיצוי זכויות, קצבת ילד נכה, ילדים מיוחדים, צרכים מיוחדים, ביטוח לאומי">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="הורה ומיוחד + מימושים - הזכות שלך הכוח שלנו">
+    <meta property="og:description" content="ליווי מקצועי למשפחות עם ילדים בעלי צרכים מיוחדים. במעל 90% הצלחה!">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Brand Colors - מהחוברות */
+            --primary-purple: #5B4A9F;
+            --deep-purple: #4A3980;
+            --light-purple: #8B7BC4;
+            --bright-orange: #FF7B54;
+            --warm-orange: #FFA06B;
+            --turquoise: #4ECDC4;
+            --bright-turquoise: #6EDDD6;
+            --sunshine-yellow: #FFD166;
+            --soft-yellow: #FFE194;
+            
+            /* UI Colors */
+            --bg-light: #F8F5FF;
+            --bg-white: #FFFFFF;
+            --text-primary: #2C2645;
+            --text-secondary: #5A5070;
+            --text-light: #8B7FA0;
+            --border: #E8E4F0;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(91, 74, 159, 0.08);
+            --shadow-md: 0 6px 20px rgba(91, 74, 159, 0.12);
+            --shadow-lg: 0 12px 40px rgba(91, 74, 159, 0.18);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #5B4A9F 0%, #8B7BC4 100%);
+            --gradient-warm: linear-gradient(135deg, #FF7B54 0%, #FFD166 100%);
+            --gradient-cool: linear-gradient(135deg, #4ECDC4 0%, #6EDDD6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Assistant', 'Heebo', -apple-system, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--primary-purple);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 0 0 0 8px;
+            z-index: 100;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--primary-purple);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary-purple);
+            color: white;
+            box-shadow: 0 4px 15px rgba(91, 74, 159, 0.3);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: var(--deep-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(91, 74, 159, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background: var(--primary-purple);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(91, 74, 159, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(91, 74, 159, 0.05) 0%, rgba(139, 123, 196, 0.08) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 123, 84, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-text .tagline {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .brand-shapes {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 10s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-purple);
+            top: 20%;
+            right: 10%;
+            opacity: 0.9;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            background: var(--bright-orange);
+            bottom: 20%;
+            right: 25%;
+            animation-delay: -3s;
+            opacity: 0.85;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--turquoise);
+            top: 40%;
+            left: 15%;
+            animation-delay: -6s;
+            opacity: 0.8;
+        }
+
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            background: var(--sunshine-yellow);
+            bottom: 30%;
+            left: 10%;
+            animation-delay: -9s;
+            opacity: 0.75;
+        }
+
+        @keyframes morphing {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: rotate(0deg);
+            }
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+                transform: rotate(180deg);
+            }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--primary-purple);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+            color: var(--sunshine-yellow);
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        /* Two Brands Section */
+        .two-brands {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .section-intro {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .brands-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            opacity: 0.05;
+            transition: all 0.5s ease;
+        }
+
+        .brand-card.hore::before {
+            background: radial-gradient(circle, var(--primary-purple) 0%, transparent 70%);
+        }
+
+        .brand-card.mimushim::before {
+            background: radial-gradient(circle, var(--bright-orange) 0%, transparent 70%);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .brand-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-info h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-card.hore .brand-info h3 {
+            color: var(--primary-purple);
+        }
+
+        .brand-card.mimushim .brand-info h3 {
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-tagline {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .brand-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .brand-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .brand-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .brand-features li:hover {
+            transform: translateX(-5px);
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .brand-card.hore .feature-icon {
+            background: linear-gradient(135deg, rgba(91, 74, 159, 0.2), rgba(139, 123, 196, 0.15));
+        }
+
+        .brand-card.mimushim .feature-icon {
+            background: linear-gradient(135deg, rgba(255, 123, 84, 0.2), rgba(255, 209, 102, 0.15));
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text strong {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .feature-text span {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            box-shadow: var(--shadow-md);
+            background: white;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card:nth-child(1) .service-icon { background: var(--gradient-primary); }
+        .service-card:nth-child(2) .service-icon { background: var(--gradient-warm); }
+        .service-card:nth-child(3) .service-icon { background: var(--gradient-cool); }
+        .service-card:nth-child(4) .service-icon { background: linear-gradient(135deg, #FFD166 0%, #FFA06B 100%); }
+        .service-card:nth-child(5) .service-icon { background: linear-gradient(135deg, #8B7BC4 0%, #6EDDD6 100%); }
+        .service-card:nth-child(6) .service-icon { background: linear-gradient(135deg, #FF7B54 0%, #4ECDC4 100%); }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-details {
+            list-style: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .service-details li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-details li::before {
+            content: '✓';
+            color: var(--primary-purple);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .story-content .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-box {
+            background: white;
+            border-right: 5px solid var(--primary-purple);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quote-box p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--primary-purple);
+            margin: 0;
+        }
+
+        .story-image {
+            position: relative;
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .story-image::before {
+            content: '💙';
+            font-size: 8rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--primary-purple);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background: white;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .cta-section::before {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 1.35rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-purple);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover,
+        .btn-white:focus {
+            background: var(--bg-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.75rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .contact-item:nth-child(1) .contact-icon { background: var(--gradient-primary); }
+        .contact-item:nth-child(2) .contact-icon { background: var(--gradient-warm); }
+        .contact-item:nth-child(3) .contact-icon { background: var(--gradient-cool); }
+
+        .contact-item-content h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item-content p,
+        .contact-item-content a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--primary-purple);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.125rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 4px rgba(91, 74, 159, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(91, 74, 159, 0.3);
+        }
+
+        .submit-btn:hover,
+        .submit-btn:focus {
+            background: var(--deep-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(91, 74, 159, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover,
+        .footer-section a:focus {
+            color: var(--sunshine-yellow);
+            transform: translateX(-3px);
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .story-container,
+            .contact-container,
+            .brands-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .brand-shapes {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo-container {
+                gap: 0.75rem;
+            }
+
+            .logo img {
+                max-height: 45px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                height: 300px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-purple: #3D2E66;
+                --text-primary: #000000;
+                --border: #333333;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <header id="header">
+        <nav role="navigation" aria-label="ניווט ראשי">
+            <div class="logo-container">
+                <a href="#" class="logo" aria-label="שבת מיוחדת">
+                    <img src="5693ccc7-e813-45be-840c-e5754b485cb3.webp" alt="שבת מיוחדת - הורה ומיוחד">
+                </a>
+                <a href="#" class="logo" aria-label="בטיפול מיוחד">
+                    <img src="e661ce61-b1e4-498e-a0f2-98fbdacd25ab.webp" alt="בטיפול מיוחד">
+                </a>
+                <a href="#" class="logo" aria-label="כמיוחד בשבילך">
+                    <img src="0f0e6999-892c-4f30-8b1c-d9f70fed79be.webp" alt="כמיוחד בשבילך">
+                </a>
+            </div>
+            
+            <button class="menu-toggle" aria-label="תפריט ניווט" aria-expanded="false" id="menuToggle">
+                ☰
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">אודותינו</a></li>
+                <li><a href="#services">השירותים</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+
+            <div class="cta-buttons">
+                <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-primary" target="_blank" rel="noopener">
+                    מיצוי זכויות ←
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://api.whatsapp.com/send?phone=972527131797&text=היי,%20אני%20מעוניין%20במידע%20נוסף" class="whatsapp-float" target="_blank" rel="noopener" aria-label="פנו אלינו בווטסאפ">
+        💬
+    </a>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>הזכות שלך<br>הכוח שלנו</h1>
+                    <p class="tagline">שם בשבילם, תמיד!</p>
+                    <p>עמותת "הורה ומיוחד" וחברת "מימושים" - ליווי מקצועי מלא למשפחות עם ילדים בעלי צרכים מיוחדים. מיצוי זכויות, קהילה תומכת, וקידום חקיקה למען עתיד טוב יותר.</p>
+                    <div class="hero-buttons">
+                        <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-primary" target="_blank" rel="noopener">
+                            למיצוי זכויות עכשיו ←
+                        </a>
+                        <a href="https://ultra.kesherhk.info/external/paymentPage/310815" class="btn btn-outline" target="_blank" rel="noopener">
+                            תרומה לעמותה 💙
+                        </a>
+                        <a href="tel:052-7131797" class="btn btn-outline">
+                            📞 052-7131797
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="brand-shapes" aria-hidden="true">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                        <div class="shape shape-4"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="stats-bar" aria-label="נתונים סטטיסטיים">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">2020</div>
+                    <div class="stat-label">שנת הקמה</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+90%</div>
+                    <div class="stat-label">הצלחה בתיקים</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">מאות</div>
+                    <div class="stat-label">משפחות מלוות בשנה</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/6</div>
+                    <div class="stat-label">תמיכה ומענה</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Brands -->
+        <section id="about" class="two-brands">
+            <div class="section-intro">
+                <h2 class="section-title">כשאנחנו יחד זה מיוחד</h2>
+                <p class="section-subtitle">שני מותגים, שליחות אחת - לתת לכם את מלוא הזכויות והתמיכה שמגיעה לכם</p>
+            </div>
+
+            <div class="brands-grid">
+                <!-- Hore Umeyuchad -->
+                <article class="brand-card hore">
+                    <div class="brand-header">
+                        <div class="brand-logo">
+                            <img src="5693ccc7-e813-45be-840c-e5754b485cb3.webp" alt="הורה ומיוחד">
+                        </div>
+                        <div class="brand-info">
+                            <h3>הורה ומיוחד</h3>
+                            <p class="brand-tagline">העמותה - הקהילה התומכת</p>
+                        </div>
+                    </div>
+                    <p class="brand-description">קבוצה של הורים לילדים מיוחדים שבחרו להיות מעורבים בגידול ילדיהם ולתת להם הכי הרבה אהבה. העמותה מספקת קהילה חמה, ייעוץ, ותמיכה לכל משפחה.</p>
+                    <ul class="brand-features">
+                        <li>
+                            <div class="feature-icon">🤝</div>
+                            <div class="feature-text">
+                                <strong>קהילת ייעוץ ותמיכה</strong>
+                                <span>קהילה דיגיטלית פעילה, קבוצות ווטסאפ ומפגשים</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">🎉</div>
+                            <div class="feature-text">
+                                <strong>כנסים וימי גיבוש</strong>
+                                <span>נופשונים, ערבי העצמה והתפתחות</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">📋</div>
+                            <div class="feature-text">
+                                <strong>קידום חקיקה</strong>
+                                <span>מאבק על תקציבים ושיפור תנאים</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">♿</div>
+                            <div class="feature-text">
+                                <strong>הנגשה ומודעות</strong>
+                                <span>קידום פתרונות הנגשה ומודעות ציבורית</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Mimushim -->
+                <article class="brand-card mimushim">
+                    <div class="brand-header">
+                        <div class="brand-logo">
+                            <img src="e661ce61-b1e4-498e-a0f2-98fbdacd25ab.webp" alt="מימושים">
+                        </div>
+                        <div class="brand-info">
+                            <h3>מימושים</h3>
+                            <p class="brand-tagline">החברה - מיצוי הזכויות המקצועי</p>
+                        </div>
+                    </div>
+                    <p class="brand-description">נבחרת מומחים בעלת מוניטין של עשור, הפועלת בסטנדרט הגבוה ביותר למען זכויות ילדים ונוער עם כל סוגי הלקויות. מתמחים אך ורק בילדים - וזה סוד הכוח שלנו.</p>
+                    <ul class="brand-features">
+                        <li>
+                            <div class="feature-icon">💰</div>
+                            <div class="feature-text">
+                                <strong>קצבאות וזכויות</strong>
+                                <span>קצבת ילד נכה, ניידות, שכר דירה ועוד</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">🎓</div>
+                            <div class="feature-text">
+                                <strong>סיוע חינוכי</strong>
+                                <span>סייעות, חינוך מיוחד, וועדות אפיון</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">🏠</div>
+                            <div class="feature-text">
+                                <strong>פתרונות הנגשה</strong>
+                                <span>התאמת דירות, ציוד עזר, נגישות מלאה</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">💡</div>
+                            <div class="feature-text">
+                                <strong>ליווי מקצועי מלא</strong>
+                                <span>מאבחון ועד קבלת התקציב - צמוד ואישי</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="services">
+            <div class="section-intro">
+                <h2 class="section-title">הזכויות שלכם - השירות שלנו</h2>
+                <p class="section-subtitle">מימושים מטפלת במאות תיקים בשנה, במעל 90% הצלחה!</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>קצבת ילד נכה</h3>
+                    <p>קצבה חודשית יציבה לילדיכם מול הביטוח הלאומי</p>
+                    <ul class="service-details">
+                        <li>הגשת בקשות מקצועיות</li>
+                        <li>הכנה מלאה לוועדות</li>
+                        <li>ערעורים במידת הצורך</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>קצבת ניידות</h3>
+                    <p>חופש תנועה ושקט כלכלי למשפחה שלכם</p>
+                    <ul class="service-details">
+                        <li>פתרונות תחבורה וניידות</li>
+                        <li>זכאות לרכב מותאם</li>
+                        <li>תג נכה לרכב פרטי</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>קצבת שכר דירה</h3>
+                    <p>סיוע בתשלום דיור בסביבה נגישה ומותאמת</p>
+                    <ul class="service-details">
+                        <li>טיפול מלא מול משרד השיכון</li>
+                        <li>ליווי צמוד בכל התהליך</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">♿</div>
+                    <h3>פתרונות הנגשה</h3>
+                    <p>איכות חיים ועצמאות בבית שלכם</p>
+                    <ul class="service-details">
+                        <li>התאמת דירות</li>
+                        <li>ציוד עזר מתאים</li>
+                        <li>הנגשה מלאה</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>סיוע חינוכי (סייעת)</h3>
+                    <p>השתלבות מיטבית במוסדות החינוך</p>
+                    <ul class="service-details">
+                        <li>חינוך מיוחד</li>
+                        <li>וועדות אפיון</li>
+                        <li>אישור סל אישי</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">⭐</div>
+                    <h3>זכויות נוספות</h3>
+                    <p>מקסימום הטבות במינימום מאמץ</p>
+                    <ul class="service-details">
+                        <li>נקודות זיכוי מס</li>
+                        <li>הנחות עירייה</li>
+                        <li>ייעוץ מקיף וליווי</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Story -->
+        <section class="story">
+            <div class="story-container">
+                <div class="story-content">
+                    <h2>שמי יהודה איינהורן, <span class="highlight">הסיפור שלנו</span></h2>
+                    <p>כאבא ליענקי המתוק המתמודד עם שיתוק מוחין, גיליתי על בשרי עד כמה מורכב עולם הנגישות והבירוקרטיה בתחום. מתוך הקושי האישי צמחה שליחות - להקים בית מקצועי, חם ויעיל להורים המתמודדים עם מצבים דומים.</p>
+                    
+                    <div class="quote-box">
+                        <p>"נכון הילדים שלנו מיוחדים, יש להם צרכים מיוחדים שאין לילד רגיל - אבל על הדרך הם הפכו אותנו להורים מיוחדים."</p>
+                    </div>
+
+                    <p>כך נוסדה "עמותת הורה ומיוחד", בהשקעה אדירה זכינו להקים קהילה תומכת המאגדת אלפי משפחות מכל קשת המוגבלויות.</p>
+
+                    <p>עם גדילת הקהילה עלה הצורך בזרוע מקצועית שתאבק על מיצוי זכויות מול כלל הגופים: ביטוח לאומי, משרדי ממשלה, רשויות מקומיות וקופות חולים. כך נולדה חברת "מימושים" - נבחרת מומחים בעלת מוניטין של עשור.</p>
+                </div>
+                <div class="story-image" role="img" aria-label="סמל לב מייצג אהבה ודאגה"></div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="testimonials">
+            <div class="section-intro">
+                <h2 class="section-title">ממש אהבו את מימושים</h2>
+                <p class="section-subtitle">מאות הורים ממליצים - הצטרפו למשפחה שלנו</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <p class="testimonial-text">מימושים נכנסו לתמונה אחרי שקיבלנו שלוש דחיות והיינו על סף ייאוש. לא יודע איך הם עשו את זה, אבל הם הגישו ערעור שהתקבל בהצלחה ובזכותם קיבלנו לא רק קצבה חודשית אלא גם זכות לרכב נגיש. אין עליכם בעולם!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ד</div>
+                        <div class="author-info">
+                            <h4>דוד רוזן</h4>
+                            <p>ירושלים</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">הורה ומיוחד מלווים אותנו ואת נתי וחיים הקטנים שלנו, כבר שנים רבות עם מידע, עזרה ותמיכה על כל צעד ושעל. מהיכרות אישית ועמוקה אני ממליצה לכל מי שמתמודדת עם ילדים עם מוגבלויות רק על השירות המיוחד של מימושים - שילוב מנצח של מקצועיות עם יחס אישי.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">מ</div>
+                        <div class="author-info">
+                            <h4>מלכה דחד</h4>
+                            <p>צפת</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">צוות מימושים דאג לה-כ-ל מא' ועד ת', בתהליך מסודר כולל הדרכה צמודה. תוך זמן קצר אושרה לנו קצבת ילד נכה מלאה! תודה עצומה ליהודה ולחברת מימושים על הליווי המקצועי והאכפתי.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ט</div>
+                        <div class="author-info">
+                            <h4>משפחת טרבלסי</h4>
+                            <p>יבנאל</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>מגיע לכם יותר</h2>
+                <p>פנו אלינו עוד היום למימוש מלא של הזכויות שלכם. אנחנו כאן בשבילכם, תמיד.</p>
+                <div class="hero-buttons">
+                    <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-white" target="_blank" rel="noopener">
+                        למיצוי זכויות עכשיו ←
+                    </a>
+                    <a href="tel:052-7131797" class="btn btn-white">
+                        📞 התקשרו: 052-7131797
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <div class="section-intro">
+                <h2 class="section-title">צור קשר</h2>
+                <p class="section-subtitle">נשמח לעמוד לרשותכם בכל שאלה</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>פרטי התקשרות</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-content">
+                            <h4>כתובות המשרדים</h4>
+                            <p>פומבדיתא 1, בית שמש</p>
+                            <p>הצבי 15, ירושלים</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-content">
+                            <h4>טלפון</h4>
+                            <a href="tel:052-7131797">052-7131797</a>
+                            <a href="tel:02-5023456">02-5023456</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-item-content">
+                            <h4>אימייל ו-WhatsApp</h4>
+                            <a href="mailto:o@ho-me.org.il">o@ho-me.org.il</a>
+                            <a href="https://api.whatsapp.com/send?phone=972527131797&text=היי,%20אני%20מעוניין%20במידע%20נוסף" target="_blank" rel="noopener">WhatsApp - לחץ כאן</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" method="post">
+                    <h3>שלחו לנו הודעה</h3>
+                    
+                    <div class="form-group">
+                        <label for="name">שם מלא <span aria-label="שדה חובה">*</span></label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">טלפון <span aria-label="שדה חובה">*</span></label>
+                        <input type="tel" id="phone" name="phone" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">אימייל</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">הודעה <span aria-label="שדה חובה">*</span></label>
+                        <textarea id="message" name="message" required aria-required="true"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">שלח הודעה ←</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="5693ccc7-e813-45be-840c-e5754b485cb3.webp" alt="הורה ומיוחד">
+                </div>
+                <p>עמותה למען משפחות עם ילדים בעלי צרכים מיוחדים</p>
+                <p>ע״ר 580715282</p>
+                <p style="margin-top: 1rem; font-weight: 600;">כל מה שמגיע לך</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>קישורים מהירים</h4>
+                <a href="#about">אודותינו</a>
+                <a href="#services">שירותים</a>
+                <a href="#testimonials">המלצות</a>
+                <a href="#contact">צור קשר</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>שירותי מימושים</h4>
+                <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" target="_blank" rel="noopener">מיצוי זכויות</a>
+                <a href="#services">קצבאות</a>
+                <a href="#services">סיוע חינוכי</a>
+                <a href="#services">פתרונות הנגשה</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>יצירת קשר</h4>
+                <a href="tel:052-7131797">📞 052-7131797</a>
+                <a href="tel:02-5023456">📞 02-5023456</a>
+                <a href="mailto:o@ho-me.org.il">✉️ o@ho-me.org.il</a>
+                <a href="https://ultra.kesherhk.info/external/paymentPage/310815" target="_blank" rel="noopener" style="color: var(--sunshine-yellow); font-weight: 700;">💙 תרומה לעמותה</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 הורה ומיוחד ומימושים - כל הזכויות שמורות | הזכות שלך, הכוח שלנו 💙</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = isExpanded ? '☰' : '✕';
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        navLinks.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.textContent = '☰';
+                    }
+                }
+            });
+        });
+
+        // Skip to Content
+        document.querySelector('.skip-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('main-content').focus();
+        });
+
+        // Form Enhancement
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm && contactForm.action.includes('kaveret.biz')) {
+            // הטופס כבר מחובר לשרת kaveret - פשוט תן לו לעבוד
+            console.log('טופס יצירת קשר מחובר ל-Kaveret');
+        }
+    </script>
+</body>
+</html>
