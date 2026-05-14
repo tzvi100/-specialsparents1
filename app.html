@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#4A1D7E" />
+<title>בודק הזכאות החכם · הורה ומיוחד · מימושים</title>
+<meta name="description" content="בדיקה חכמה וקצרה: על אילו זכויות וקצבאות יש לכם סיכוי גבוה — לפי סוג הלקות, גיל הילד והמצב המשפחתי. סכומים עדכניים ל-2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --brand-purple:#4A1D7E;
+    --brand-purple-deep:#3A1463;
+    --brand-purple-light:#A78EC9;
+    --brand-purple-soft:#EDE5F5;
+    --brand-teal:#2EAFB8;
+    --brand-teal-soft:#D4EFF1;
+    --brand-orange:#F26B4F;
+    --brand-orange-soft:#FCE0D9;
+    --brand-yellow:#F5C536;
+    --brand-yellow-soft:#FCF1CC;
+    --green:#2D8F5F;
+    --green-soft:#D8EDE0;
+
+    --ink:#1A1230;
+    --ink-soft:#4A3D5C;
+    --bg:#FAFAFA;
+    --bg-2:#F4F0F8;
+    --white:#FFFFFF;
+    --line:rgba(74,29,126,.12);
+
+    --shadow-lg:0 30px 60px -30px rgba(74,29,126,.4);
+    --shadow-md:0 14px 32px -16px rgba(74,29,126,.3);
+    --shadow-sm:0 6px 16px -8px rgba(74,29,126,.22);
+
+    --radius-lg:24px;
+    --radius-md:16px;
+    --radius-sm:12px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Heebo',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    min-height:100vh;
+    min-height:100dvh;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    display:flex;flex-direction:column;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;-webkit-tap-highlight-color:transparent}
+
+  .container{
+    width:100%;
+    max-width:780px;
+    margin:0 auto;
+    padding-inline:clamp(16px,4vw,32px);
+  }
+
+  /* HEADER */
+  .app-header{
+    background:var(--brand-purple);color:#fff;
+    padding:14px 0;
+    position:sticky;top:0;z-index:30;
+    box-shadow:0 2px 12px rgba(74,29,126,.15);
+  }
+  .app-header-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .back-btn{
+    width:42px;height:42px;border-radius:12px;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;
+    display:grid;place-items:center;font-size:1.2rem;flex-shrink:0;
+    transition:transform .25s ease,background .25s;
+  }
+  .back-btn:hover{transform:translateX(3px);background:rgba(255,255,255,.25)}
+  .app-title{
+    font-family:'Rubik',sans-serif;font-weight:800;
+    font-size:clamp(1rem,2.5vw,1.15rem);
+    text-align:center;flex:1;color:#fff;
+  }
+  .app-title span{display:block;font-family:'Heebo';font-size:.7rem;font-weight:500;color:var(--brand-yellow);letter-spacing:.1em;margin-top:2px}
+
+  main{flex:1;padding:clamp(24px,5vw,48px) 0}
+
+  /* PROGRESS */
+  .progress-wrap{margin-bottom:32px}
+  .progress-info{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:10px;font-size:.85rem;font-weight:600;
+  }
+  .progress-info .step-num{color:var(--brand-purple)}
+  .progress-info .step-percent{color:var(--ink-soft)}
+  .progress-bar{
+    height:8px;background:var(--brand-purple-soft);border-radius:999px;overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;background:linear-gradient(90deg,var(--brand-yellow),var(--brand-orange));
+    border-radius:999px;transition:width .5s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 0 12px rgba(242,107,79,.4);
+  }
+
+  /* CARD */
+  .card{
+    background:var(--white);border-radius:var(--radius-lg);
+    padding:clamp(24px,4vw,40px);
+    box-shadow:var(--shadow-sm);
+    animation:slideIn .4s ease;
+  }
+  @keyframes slideIn{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:none}
+  }
+  .question-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    background:var(--brand-purple-soft);
+    font-size:.78rem;letter-spacing:.08em;color:var(--brand-purple);font-weight:700;
+    margin-bottom:18px;text-transform:uppercase;
+  }
+  .question-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand-orange)}
+  .question-title{
+    font-family:'Rubik',sans-serif;font-weight:800;
+    font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.15;margin-bottom:12px;color:var(--brand-purple);
+  }
+  .question-help{
+    color:var(--ink-soft);font-size:1rem;margin-bottom:28px;
+  }
+
+  /* OPTIONS */
+  .options{display:grid;gap:12px;margin-bottom:24px}
+  .option{
+    display:flex;align-items:center;gap:14px;
+    padding:18px 20px;
+    background:var(--bg);
+    border:2px solid var(--line);
+    border-radius:var(--radius-md);
+    text-align:right;width:100%;
+    font-size:1rem;font-weight:500;color:var(--ink);
+    transition:all .25s ease;
+    min-height:64px;
+  }
+  .option:hover{border-color:var(--brand-purple-light);background:#fff;transform:translateX(-3px)}
+  .option.selected{
+    border-color:var(--brand-orange);background:#fff;
+    box-shadow:0 0 0 3px rgba(242,107,79,.15);
+  }
+  .option .check{
+    width:26px;height:26px;border-radius:50%;
+    border:2px solid var(--line);
+    display:grid;place-items:center;flex-shrink:0;
+    transition:all .25s ease;
+  }
+  .option.selected .check{
+    background:var(--brand-orange);border-color:var(--brand-orange);
+  }
+  .option.selected .check::after{
+    content:"✓";color:#fff;font-weight:900;font-size:.9rem;
+  }
+  .option .opt-icon{font-size:1.4rem;flex-shrink:0}
+  .option .opt-label{flex:1}
+  .option .opt-label strong{display:block;font-weight:700}
+  .option .opt-label span{display:block;font-size:.82rem;color:var(--ink-soft);font-weight:400;margin-top:2px}
+
+  /* AGE */
+  .age-input{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin:30px 0 24px;
+  }
+  .age-btn{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--brand-purple-soft);
+    color:var(--brand-purple);
+    font-size:1.5rem;font-weight:700;
+    transition:all .2s ease;
+  }
+  .age-btn:hover{background:var(--brand-purple);color:#fff;transform:scale(1.05)}
+  .age-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .age-display{
+    font-family:'Rubik',sans-serif;font-weight:900;
+    font-size:clamp(2.5rem,8vw,4rem);
+    color:var(--brand-purple);min-width:120px;text-align:center;line-height:1;
+  }
+  .age-display small{font-size:.4em;display:block;color:var(--ink-soft);font-family:'Heebo';font-weight:500;margin-top:6px}
+
+  /* ACTIONS */
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 28px;border-radius:999px;
+    font-weight:700;font-size:.95rem;
+    transition:all .25s ease;
+    white-space:nowrap;min-height:52px;
+    flex:1;
+  }
+  .btn-primary{background:var(--brand-purple);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);background:var(--brand-purple-deep)}
+  .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-orange{background:var(--brand-orange);color:#fff}
+  .btn-orange:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn-yellow{background:var(--brand-yellow);color:var(--ink)}
+  .btn-yellow:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn-ghost{background:transparent;color:var(--brand-purple);border:2px solid var(--brand-purple);flex:0 0 auto;min-width:120px}
+  .btn-ghost:hover{background:var(--brand-purple);color:#fff}
+  .btn:active{transform:scale(.97)}
+
+  /* RESULTS */
+  .results-header{text-align:center;margin-bottom:32px}
+  .results-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 20px;border-radius:999px;
+    background:var(--green);color:#fff;
+    font-weight:700;font-size:.9rem;
+    box-shadow:var(--shadow-sm);
+    margin-bottom:18px;
+  }
+  .results-badge::before{content:"✓";font-size:1.1rem}
+  .results-title{
+    font-family:'Rubik',sans-serif;font-weight:900;
+    font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.1;margin-bottom:12px;color:var(--brand-purple);
+  }
+  .results-title em{font-style:normal;color:var(--brand-orange)}
+  .results-sub{color:var(--ink-soft);font-size:1.05rem;max-width:520px;margin:0 auto}
+
+  .summary{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px;
+  }
+  .summary-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:18px 16px;text-align:center;
+  }
+  .summary-card.high{border-top:4px solid var(--green)}
+  .summary-card.medium{border-top:4px solid var(--brand-yellow)}
+  .summary-card.low{border-top:4px solid var(--brand-purple-light)}
+  .summary-card strong{
+    display:block;font-family:'Rubik',sans-serif;
+    font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;color:var(--brand-purple);line-height:1;
+  }
+  .summary-card span{font-size:.82rem;color:var(--ink-soft);display:block;margin-top:4px;font-weight:600}
+
+  .results-list{display:grid;gap:14px;margin-bottom:32px}
+  .result-card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:22px;
+    transition:all .3s ease;
+    border-right:5px solid var(--brand-yellow);
+  }
+  .result-card.high{border-right-color:var(--green)}
+  .result-card.medium{border-right-color:var(--brand-yellow)}
+  .result-card.low{border-right-color:var(--brand-purple-light);opacity:.85}
+  .result-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .result-head{
+    display:flex;align-items:flex-start;gap:14px;margin-bottom:12px;
+  }
+  .result-icon{
+    width:48px;height:48px;border-radius:13px;
+    display:grid;place-items:center;font-size:1.4rem;flex-shrink:0;color:#fff;
+  }
+  .result-card.high .result-icon{background:var(--green)}
+  .result-card.medium .result-icon{background:var(--brand-yellow);color:var(--ink)}
+  .result-card.low .result-icon{background:var(--brand-purple-light)}
+  .result-info{flex:1;min-width:0}
+  .result-info h3{
+    font-family:'Rubik',sans-serif;font-weight:800;
+    font-size:1.2rem;margin-bottom:4px;color:var(--ink);
+  }
+  .result-likelihood{
+    display:inline-block;font-size:.75rem;font-weight:700;
+    padding:3px 10px;border-radius:999px;letter-spacing:.04em;
+  }
+  .likelihood-high{background:var(--green-soft);color:var(--green)}
+  .likelihood-medium{background:var(--brand-yellow-soft);color:#7a5520}
+  .likelihood-low{background:var(--brand-purple-soft);color:var(--brand-purple)}
+
+  .result-amount{
+    display:inline-block;background:var(--brand-purple);color:#fff;
+    padding:6px 14px;border-radius:8px;
+    font-family:'Rubik',sans-serif;font-weight:700;font-size:.92rem;
+    margin-top:8px;
+  }
+  .result-card.high .result-amount{background:var(--green)}
+  .result-amount small{font-size:.7em;font-weight:500;opacity:.85}
+
+  .result-desc{color:var(--ink-soft);font-size:.92rem;margin-bottom:14px;margin-top:8px}
+  .result-steps{
+    background:var(--bg);border-radius:var(--radius-sm);
+    padding:14px 16px;
+  }
+  .result-steps strong{
+    display:block;font-size:.78rem;letter-spacing:.06em;
+    color:var(--brand-purple);font-weight:700;margin-bottom:8px;text-transform:uppercase;
+  }
+  .result-steps ul{list-style:none;display:grid;gap:6px}
+  .result-steps li{
+    font-size:.88rem;display:flex;gap:8px;align-items:flex-start;color:var(--ink-soft);
+  }
+  .result-steps li::before{
+    content:"→";color:var(--brand-orange);font-weight:900;flex-shrink:0;
+  }
+
+  /* CTA */
+  .cta-block{
+    background:linear-gradient(135deg,var(--brand-purple),var(--brand-purple-deep));
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:clamp(28px,4vw,40px);
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-block::before{
+    content:"";position:absolute;top:-50%;right:-30%;width:80%;height:200%;
+    background:radial-gradient(circle,rgba(245,197,54,.2),transparent 60%);
+    pointer-events:none;
+  }
+  .cta-block h3{
+    font-family:'Rubik',sans-serif;font-weight:900;
+    font-size:clamp(1.3rem,3.5vw,1.8rem);margin-bottom:10px;position:relative;color:#fff;
+  }
+  .cta-block p{color:rgba(255,255,255,.85);margin-bottom:20px;position:relative;font-size:.95rem}
+  .cta-block .actions{position:relative;justify-content:center}
+  .cta-block .btn-primary{background:var(--brand-yellow);color:var(--ink)}
+  .cta-block .btn-primary:hover{background:#fff}
+  .cta-block .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+  .cta-block .btn-ghost:hover{background:#fff;color:var(--brand-purple)}
+
+  /* DISCLAIMER */
+  .disclaimer{
+    text-align:center;margin-top:24px;padding:14px;
+    color:var(--ink-soft);font-size:.78rem;
+    background:var(--brand-purple-soft);border-radius:var(--radius-sm);
+    line-height:1.5;
+  }
+
+  /* TABLET */
+  @media (min-width:640px){
+    .summary{grid-template-columns:repeat(3,1fr)}
+    .options.cols-2{grid-template-columns:1fr 1fr}
+    .actions{flex-wrap:nowrap}
+  }
+
+  @media (min-width:900px){
+    .container{max-width:840px}
+    .age-btn{width:60px;height:60px}
+  }
+
+  @media (max-width:480px){
+    .options.cols-2{grid-template-columns:1fr}
+    .btn-ghost{min-width:auto;padding:14px 20px}
+    .actions{gap:8px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="container app-header-inner">
+    <a href="index.html" class="back-btn" aria-label="חזור לאתר">→</a>
+    <div class="app-title">
+      בודק הזכאות החכם
+      <span>הורה ומיוחד · מימושים · 2026</span>
+    </div>
+    <div style="width:42px"></div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div id="app"></div>
+  </div>
+</main>
+
+<script>
+  // ============================================
+  // QUIZ DATA
+  // ============================================
+  const QUESTIONS = [
+    {
+      id:'disability',
+      eyebrow:'שלב 1',
+      title:'מה סוג הלקות העיקרית של הילד?',
+      help:'אפשר לבחור את הקטגוריה הקרובה ביותר. בהמשך נחדד.',
+      type:'select',
+      cols:2,
+      options:[
+        {v:'physical', icon:'♿', label:'לקות פיזית / מוטורית', desc:'שיתוק מוחין, ניוון שרירים, נכות פיזית'},
+        {v:'developmental', icon:'🧩', label:'לקות התפתחותית', desc:'אוטיזם, עיכוב התפתחותי, מוגבלות שכלית'},
+        {v:'sensory', icon:'👁️', label:'לקות חושית', desc:'עיוורון, חירשות, ליקוי שמיעה / ראייה'},
+        {v:'medical', icon:'🏥', label:'מצב רפואי כרוני', desc:'סוכרת, אפילפסיה, סרטן, דיאליזה'},
+        {v:'mental', icon:'💭', label:'מצב נפשי / התנהגותי', desc:'הפרעות נפשיות מאובחנות, ADHD קשה'},
+        {v:'multiple', icon:'➕', label:'לקויות משולבות', desc:'תסמונת דאון, נדיר, יותר מסוג לקות'},
+      ]
+    },
+    {
+      id:'age',
+      eyebrow:'שלב 2',
+      title:'בן כמה הילד / הילדה?',
+      help:'הגיל קובע אילו זכויות רלוונטיות. ילד נכה נחשב מ-3 חודשים עד 18 שנה.',
+      type:'age',
+    },
+    {
+      id:'severity',
+      eyebrow:'שלב 3',
+      title:'מהי רמת התלות בעזרת הזולת?',
+      help:'בפעולות יומיומיות בסיסיות (לבישה, אכילה, היגיינה, ניידות בבית).',
+      type:'select',
+      options:[
+        {v:'full', icon:'🔴', label:'תלות מלאה ברוב היום', desc:'יכול לזכות בקצבה של עד 235% (9,126 ₪)'},
+        {v:'high', icon:'🟠', label:'תלות מורחבת', desc:'יכול לזכות בקצבה של 188% (7,181 ₪)'},
+        {v:'medium', icon:'🟡', label:'תלות בינונית', desc:'יכול לזכות בקצבה של 100%-112%'},
+        {v:'partial', icon:'🟢', label:'תלות חלקית', desc:'יכול לזכות בקצבה של 50% (1,943 ₪)'},
+        {v:'minimal', icon:'⚪', label:'עצמאי בעיקר', desc:'בעיקר השגחה והכוונה'},
+      ]
+    },
+    {
+      id:'mobility',
+      eyebrow:'שלב 4',
+      title:'האם יש קושי בניידות?',
+      help:'הליכה, שימוש ברכב, יציאה מהבית. רלוונטי לקצבת ניידות (מגיל 3+).',
+      type:'select',
+      options:[
+        {v:'wheelchair', icon:'♿', label:'כיסא גלגלים', desc:'משתמש בכיסא גלגלים באופן קבוע'},
+        {v:'aid', icon:'🦽', label:'הליכון / מקל', desc:'הליכה מוגבלת עם אביזרי עזר'},
+        {v:'limited', icon:'👣', label:'הליכה מוגבלת', desc:'הולך אך עם קושי לטווחים ארוכים'},
+        {v:'none', icon:'✅', label:'אין מגבלת ניידות', desc:'הליכה תקינה'},
+      ]
+    },
+    {
+      id:'school',
+      eyebrow:'שלב 5',
+      title:'מסגרת חינוכית נוכחית?',
+      help:'איפה הילד לומד היום (אם רלוונטי לגיל).',
+      type:'select',
+      options:[
+        {v:'special', icon:'🏫', label:'חינוך מיוחד', desc:'בית ספר / גן של החינוך המיוחד'},
+        {v:'integrated', icon:'🎓', label:'משולב עם סייעת', desc:'חינוך רגיל עם תמיכה'},
+        {v:'regular', icon:'📚', label:'חינוך רגיל', desc:'ללא תמיכה מיוחדת כרגע'},
+        {v:'rehab', icon:'🌟', label:'מעון יום שיקומי', desc:'פעוטות עד גיל 3'},
+        {v:'none', icon:'🏠', label:'לא רלוונטי / אחר', desc:'גיל פעוט / לא במסגרת'},
+      ]
+    },
+  ];
+
+  // Rights database (updated to 2026 data from BTL)
+  const RIGHTS = [
+    {
+      id:'disabled-child',
+      name:'קצבת ילד נכה',
+      icon:'💰',
+      amount:{50:'1,943 ₪', 100:'3,820 ₪', 112:'4,501 ₪', 188:'7,181 ₪', 235:'9,126 ₪'},
+      desc:'קצבה חודשית מהביטוח הלאומי, ב-5 רמות זכאות לפי הליקוי ורמת התלות. הסכומים מעודכנים ל-1.1.2026.',
+      steps:[
+        'הגשת בקשה לביטוח הלאומי עם מסמכים רפואיים עדכניים',
+        'הזמנה לוועדה רפואית (ועדת תלות מגיל 3)',
+        'קבלת אחוזי זכאות לפי רשימת המחלות והליקויים',
+      ],
+      score: a => {
+        let s = 0;
+        if(['physical','developmental','sensory','medical','mental','multiple'].includes(a.disability)) s+=40;
+        if(a.severity==='full') s+=45;
+        else if(a.severity==='high') s+=40;
+        else if(a.severity==='medium') s+=30;
+        else if(a.severity==='partial') s+=20;
+        if(a.age <= 18) s+=20;
+        return s;
+      },
+      getAmount: a => {
+        if(a.severity==='full') return '9,126 ₪ (235%)';
+        if(a.severity==='high') return '7,181 ₪ (188%)';
+        if(a.severity==='medium') return '3,820-4,501 ₪ (100-112%)';
+        if(a.severity==='partial') return '1,943 ₪ (50%)';
+        return 'בדיקה אישית';
+      }
+    },
+    {
+      id:'mobility',
+      name:'קצבת ניידות',
+      icon:'🚗',
+      desc:'הטבות משמעותיות לרכישת רכב, הלוואה עומדת, השתתפות במס רכישה ותג נכה. עבור ילד מעל גיל 3 עם נכות פיזית המגבילה ניידות.',
+      steps:[
+        'בדיקה במכון הרפואי לבטיחות בדרכים',
+        'אישור ועדה רפואית של משרד הבריאות',
+        'הגשת בקשה למימון רכב מותאם או קצבה לחסר רכב',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.age < 3) return 0;
+        if(a.mobility==='wheelchair') s+=70;
+        else if(a.mobility==='aid') s+=50;
+        else if(a.mobility==='limited') s+=25;
+        if(a.disability==='physical') s+=20;
+        return s;
+      },
+      getAmount: () => 'משתנה + הלוואה'
+    },
+    {
+      id:'tax-credit',
+      name:'2 נקודות זיכוי במס הכנסה',
+      icon:'💵',
+      desc:'2 נקודות זיכוי נוספות בשנה להורה לילד עם מוגבלות. שווי כספי משמעותי דרך החזר ניכוי מס במשכורת.',
+      steps:[
+        'אישור על קבלת קצבת ילד נכה מהביטוח הלאומי',
+        'סימון בטופס 101 והגשה למעסיק',
+        'התאמת ניכוי מס במשכורת',
+      ],
+      score: a => {
+        let s = 70;
+        if(a.severity==='full' || a.severity==='high') s+=15;
+        return s;
+      },
+      getAmount: () => '~5,000 ₪ לשנה'
+    },
+    {
+      id:'special-ed',
+      name:'חינוך מיוחד / סייעת',
+      icon:'🎓',
+      desc:'שירותי חינוך מיוחדים בחינם או סייעת אישית/רפואית במימון משרד החינוך. נדרשת ועדת אפיון וזכאות.',
+      steps:[
+        'פנייה לוועדת אפיון וזכאות במשרד החינוך',
+        'הגשת אבחונים ומסמכים תומכים',
+        'אישור היקף שעות סייעת או מסגרת מיוחדת',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.age < 3) return 0;
+        if(a.age >= 3 && a.age <= 21) s+=30;
+        if(a.school==='integrated') s+=50;
+        else if(a.school==='special') s+=40;
+        if(['developmental','physical','medical','multiple'].includes(a.disability)) s+=25;
+        if(a.severity==='full'||a.severity==='high'||a.severity==='medium') s+=15;
+        return s;
+      },
+      getAmount: () => 'מימון מלא'
+    },
+    {
+      id:'rehab-daycare',
+      name:'מעון יום שיקומי',
+      icon:'🌟',
+      desc:'מימון מסגרת מותאמת לפעוטות מחצי שנה עד 3 שנים — עם לקויות רפואיות מורכבות.',
+      steps:[
+        'פנייה למחלקה לשירותים חברתיים באזור המגורים',
+        'הערכה של עו״ס ואישור ועדה',
+        'השמה במעון יום שיקומי',
+      ],
+      score: a => {
+        if(a.age > 3) return 0;
+        let s = 60;
+        if(a.severity==='full'||a.severity==='high') s+=25;
+        return s;
+      },
+      getAmount: () => 'מימון מלא'
+    },
+    {
+      id:'electricity',
+      name:'50% הנחה בחשמל',
+      icon:'💡',
+      desc:'הנחה של 50% על 400 קוט"ש ראשונים בכל חודש. ניתן אוטומטית לזכאים לקצבת ילד נכה בשל תלות בזולת.',
+      steps:[
+        'אוטומטי לאחר העברת רשימות הזכאים מביטוח לאומי',
+        'במקרה של חוסר בזכאות — פנייה לחברת החשמל',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.severity==='full'||a.severity==='high') s+=70;
+        else if(a.severity==='medium') s+=50;
+        else if(a.severity==='partial') s+=30;
+        return s;
+      },
+      getAmount: () => '50% הנחה'
+    },
+    {
+      id:'arnona',
+      name:'הנחה בארנונה',
+      icon:'🏛️',
+      desc:'הנחה משמעותית בארנונה לרשות המקומית. שיעור ההנחה משתנה לפי הרשות ולפי שיעור הנכות.',
+      steps:[
+        'הגשת בקשה למחלקת הארנונה ברשות',
+        'הצגת אישור זכאות עדכני מהביטוח הלאומי',
+        'אישור הזכאות במהלך החודש',
+      ],
+      score: a => 60,
+      getAmount: () => 'עד 33% הנחה'
+    },
+    {
+      id:'water',
+      name:'תעריף מים מוזל',
+      icon:'💧',
+      desc:'הנחה על עד 3.5 מ"ק מים נוספים לחודש. ניתנת אוטומטית בהתאם לרשימות מהביטוח הלאומי.',
+      steps:[
+        'אוטומטי בהתאם לרשימות מהביטוח הלאומי',
+        'אם אין הנחה — פנייה לרשות המים',
+      ],
+      score: a => 55,
+      getAmount: () => 'תעריף מוזל'
+    },
+    {
+      id:'kupat-holim',
+      name:'פטור מהשתתפות עצמית',
+      icon:'🏥',
+      desc:'פטור מהשתתפות עצמית בקופת חולים — רופאים מומחים, מרפאות חוץ ושירותים נוספים. לילדים סומטיים.',
+      steps:[
+        'הפטור ניתן אוטומטית לרוב הזכאים',
+        'אם לא ניתן — פנייה לביטוח לאומי או הצגת אישור בקופה',
+      ],
+      score: a => {
+        let s = 50;
+        if(a.disability==='medical') s+=20;
+        return s;
+      },
+      getAmount: () => 'פטור מלא'
+    },
+    {
+      id:'mobility-tag',
+      name:'תג נכה ופטור מאגרת רישוי',
+      icon:'🅿️',
+      desc:'תג נכה לחנייה במקומות מוגדרים ופטור מאגרת רישוי שנתית לרכב. לילד עם מוגבלות מעל 60% או נכות קשה.',
+      steps:[
+        'הגשת טופס מקוון באתר משרד התחבורה',
+        'צירוף אישורים רפואיים',
+        'קבלת התג והפטור',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.mobility==='wheelchair') s+=70;
+        else if(a.mobility==='aid') s+=50;
+        else if(a.mobility==='limited') s+=30;
+        if(a.severity==='full'||a.severity==='high') s+=20;
+        return s;
+      },
+      getAmount: () => 'פטור מלא'
+    },
+    {
+      id:'accessibility',
+      name:'התאמת דיור והנגשה',
+      icon:'♿',
+      desc:'מימון התאמות בבית: רמפות, מקלחת מותאמת, דלתות מורחבות וציוד עזר. במימון משרד הבריאות / שיכון.',
+      steps:[
+        'הערכת מרפא בעיסוק',
+        'הגשת בקשה למשרד הבריאות / שיכון',
+        'ביצוע התאמות במימון מלא או חלקי',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.mobility==='wheelchair') s+=70;
+        else if(a.mobility==='aid') s+=50;
+        if(a.severity==='full'||a.severity==='high') s+=20;
+        if(a.disability==='physical') s+=15;
+        return s;
+      },
+      getAmount: () => 'מימון מלא או חלקי'
+    },
+    {
+      id:'housing-loan',
+      name:'הלוואה לרכישת דירה',
+      icon:'🏠',
+      desc:'הלוואה לרכישת דירה לחסרי דיור — להורים לילד עם קצבה בשיעור 100% לפחות. דרך הבנקים למשכנתאות.',
+      steps:[
+        'פנייה לבנק למשכנתאות',
+        'תעודת זהות, תעודת נישואין, פרטי ילדים',
+        'אישור מביטוח לאומי ומסמכים רפואיים',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.severity==='full'||a.severity==='high'||a.severity==='medium') s+=60;
+        return s;
+      },
+      getAmount: () => 'תנאים מועדפים'
+    },
+    {
+      id:'respite',
+      name:'נופשון וקייטנות',
+      icon:'🌴',
+      desc:'ימי נופשון ומסגרות פנאי במימון משרד הרווחה. אירוח זמני 15 יום בשנה דרך עזר מציון ("הקלה").',
+      steps:[
+        'פנייה ללשכת הרווחה ברשות',
+        'הערכה של עו״ס',
+        'אישור סל פעילויות',
+      ],
+      score: a => {
+        let s = 0;
+        if(a.age >= 4 && a.age <= 21) s+=50;
+        if(a.severity==='full'||a.severity==='high') s+=20;
+        return s;
+      },
+      getAmount: () => 'מימון מלא'
+    },
+  ];
+
+  // STATE
+  const state = {
+    step:0,
+    answers:{},
+    age:5,
+  };
+
+  const app = document.getElementById('app');
+
+  function render(){
+    if(state.step >= QUESTIONS.length){
+      renderResults();
+      return;
+    }
+    const q = QUESTIONS[state.step];
+    const total = QUESTIONS.length;
+    const current = state.step + 1;
+    const percent = Math.round(((state.step) / total) * 100);
+
+    let optionsHTML = '';
+    if(q.type === 'select'){
+      const cols = q.cols === 2 ? 'cols-2' : '';
+      optionsHTML = `
+        <div class="options ${cols}">
+          ${q.options.map(o => `
+            <button class="option ${state.answers[q.id]===o.v ? 'selected' : ''}" data-value="${o.v}">
+              <div class="check"></div>
+              ${o.icon ? `<div class="opt-icon">${o.icon}</div>` : ''}
+              <div class="opt-label">
+                <strong>${o.label}</strong>
+                ${o.desc ? `<span>${o.desc}</span>` : ''}
+              </div>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    } else if(q.type === 'age'){
+      optionsHTML = `
+        <div class="age-input">
+          <button class="age-btn" id="ageMinus" aria-label="פחות">−</button>
+          <div class="age-display">
+            <span id="ageVal">${state.age}</span>
+            <small>${state.age === 1 ? 'שנה' : 'שנים'}</small>
+          </div>
+          <button class="age-btn" id="agePlus" aria-label="יותר">+</button>
+        </div>
+      `;
+    }
+
+    const canNext = q.type === 'age' || state.answers[q.id] !== undefined;
+
+    app.innerHTML = `
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span class="step-num">שלב ${current} מתוך ${total}</span>
+          <span class="step-percent">${percent}% הושלם</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="question-eyebrow">${q.eyebrow}</div>
+        <h2 class="question-title">${q.title}</h2>
+        ${q.help ? `<p class="question-help">${q.help}</p>` : ''}
+        ${optionsHTML}
+        <div class="actions">
+          ${state.step > 0 ? '<button class="btn btn-ghost" id="backBtn">→ חזור</button>' : ''}
+          <button class="btn btn-primary" id="nextBtn" ${!canNext ? 'disabled' : ''}>
+            ${current === total ? 'הצג תוצאות ←' : 'המשך ←'}
+          </button>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        🔒 הבדיקה אנונימית · ללא רישום · התשובה מבוססת על אינדיקציה כללית ואינה מחליפה ייעוץ מקצועי. הסכומים עדכניים ל-1.1.2026.
+      </p>
+    `;
+
+    if(q.type === 'select'){
+      app.querySelectorAll('.option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.answers[q.id] = btn.dataset.value;
+          render();
+        });
+      });
+    } else if(q.type === 'age'){
+      const minus = document.getElementById('ageMinus');
+      const plus = document.getElementById('agePlus');
+      const val = document.getElementById('ageVal');
+      const updateAge = () => {
+        val.textContent = state.age;
+        val.nextElementSibling.textContent = state.age === 1 ? 'שנה' : 'שנים';
+        minus.disabled = state.age <= 0;
+        plus.disabled = state.age >= 25;
+        state.answers.age = state.age;
+      };
+      updateAge();
+      minus.addEventListener('click', () => { if(state.age > 0){ state.age--; updateAge(); }});
+      plus.addEventListener('click', () => { if(state.age < 25){ state.age++; updateAge(); }});
+      state.answers.age = state.age;
+    }
+
+    const next = document.getElementById('nextBtn');
+    if(next) next.addEventListener('click', () => {
+      if(q.type === 'age') state.answers.age = state.age;
+      state.step++;
+      render();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+    const back = document.getElementById('backBtn');
+    if(back) back.addEventListener('click', () => {
+      state.step--;
+      render();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  function renderResults(){
+    const a = {...state.answers, age: state.age};
+
+    const scored = RIGHTS.map(r => ({
+      ...r,
+      score: Math.min(100, Math.max(0, r.score(a))),
+      computedAmount: r.getAmount ? r.getAmount(a) : null,
+    })).sort((x,y) => y.score - x.score);
+
+    const high = scored.filter(r => r.score >= 60);
+    const medium = scored.filter(r => r.score >= 35 && r.score < 60);
+    const low = scored.filter(r => r.score < 35 && r.score > 0);
+    const relevant = [...high, ...medium];
+
+    const disabilityLabels = {
+      physical:'לקות פיזית', developmental:'לקות התפתחותית', sensory:'לקות חושית',
+      medical:'מצב רפואי', mental:'מצב נפשי', multiple:'לקויות משולבות'
+    };
+    const summary = `היי, סיימתי את בודק הזכאות באתר.%0Aסוג לקות: ${disabilityLabels[a.disability]||'-'}%0Aגיל: ${a.age}%0Aזכויות שנמצאו: ${high.length} בעדיפות גבוהה ועוד ${medium.length} בעדיפות בינונית.%0Aאשמח לתאם שיחה לליווי מקצועי.`;
+    const wa = `https://api.whatsapp.com/send?phone=972527131797&text=${summary}`;
+
+    app.innerHTML = `
+      <div class="results-header">
+        <span class="results-badge">הבדיקה הסתיימה</span>
+        <h1 class="results-title">מצאנו <em>${relevant.length} זכויות</em> רלוונטיות עבורכם</h1>
+        <p class="results-sub">להלן הקצבאות וההטבות שלפי הנתונים יש סיכוי טוב לקבל. כל זכות מצריכה הליך מסודר — ואנחנו כאן לעזור.</p>
+      </div>
+
+      <div class="summary">
+        <div class="summary-card high">
+          <strong>${high.length}</strong>
+          <span>סיכוי גבוה</span>
+        </div>
+        <div class="summary-card medium">
+          <strong>${medium.length}</strong>
+          <span>סיכוי בינוני</span>
+        </div>
+        <div class="summary-card low">
+          <strong>${low.length}</strong>
+          <span>נוספות לבדיקה</span>
+        </div>
+      </div>
+
+      <div class="results-list">
+        ${relevant.map(r => {
+          const cls = r.score >= 60 ? 'high' : 'medium';
+          const lbl = r.score >= 60 ? 'סיכוי גבוה' : 'סיכוי בינוני';
+          const lblCls = r.score >= 60 ? 'likelihood-high' : 'likelihood-medium';
+          return `
+            <article class="result-card ${cls}">
+              <div class="result-head">
+                <div class="result-icon">${r.icon}</div>
+                <div class="result-info">
+                  <h3>${r.name}</h3>
+                  <span class="result-likelihood ${lblCls}">${lbl} · ${r.score}%</span>
+                  ${r.computedAmount ? `<div><span class="result-amount">${r.computedAmount} <small>לחודש/בקשה</small></span></div>` : ''}
+                </div>
+              </div>
+              <p class="result-desc">${r.desc}</p>
+              <div class="result-steps">
+                <strong>שלבי המימוש</strong>
+                <ul>${r.steps.map(s => `<li>${s}</li>`).join('')}</ul>
+              </div>
+            </article>
+          `;
+        }).join('')}
+
+        ${low.length ? `
+          <details style="margin-top:8px">
+            <summary style="cursor:pointer;padding:14px 18px;background:var(--brand-purple-soft);border-radius:var(--radius-md);font-weight:700;color:var(--brand-purple);font-size:.92rem;list-style:none;display:flex;align-items:center;gap:8px">
+              <span style="color:var(--brand-orange)">▼</span>
+              ראה ${low.length} זכויות נוספות לבדיקה
+            </summary>
+            <div style="display:grid;gap:14px;margin-top:14px">
+              ${low.map(r => `
+                <article class="result-card low">
+                  <div class="result-head">
+                    <div class="result-icon">${r.icon}</div>
+                    <div class="result-info">
+                      <h3>${r.name}</h3>
+                      <span class="result-likelihood likelihood-low">לבדיקה · ${r.score}%</span>
+                    </div>
+                  </div>
+                  <p class="result-desc">${r.desc}</p>
+                </article>
+              `).join('')}
+            </div>
+          </details>
+        ` : ''}
+      </div>
+
+      <div class="cta-block">
+        <h3>רוצים שניקח את זה מכאן?</h3>
+        <p>נציג של מימושים יחזור אליכם תוך 24 שעות עם תכנית פעולה מותאמת אישית — ללא עלות.</p>
+        <div class="actions">
+          <a href="${wa}" class="btn btn-primary">📱 שלח בוואטסאפ עם הסיכום</a>
+          <button class="btn btn-ghost" id="restartBtn">בדוק שוב</button>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        ⚠️ <strong>שימו לב:</strong> תוצאות הבדיקה הן אינדיקציה ראשונית בלבד. הזכאות בפועל נקבעת על ידי הגופים המוסמכים (ביטוח לאומי, משרדי הממשלה, רשויות מקומיות) על סמך מסמכים, אבחונים ובדיקות מקצועיות. הצלחת תיק תלויה בהגשה נכונה ובהוכחות תומכות. הסכומים עדכניים לפי לוח התעריפים של הביטוח הלאומי, נכון ל-1.1.2026.
+      </p>
+    `;
+
+    document.getElementById('restartBtn').addEventListener('click', () => {
+      state.step = 0;
+      state.answers = {};
+      state.age = 5;
+      render();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  render();
+</script>
+</body>
+</html>
