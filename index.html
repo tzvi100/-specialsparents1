@@ -19,16 +19,17 @@
      DESIGN TOKENS — Brand colors from prospectus
      ============================================ */
   :root{
-    --brand-purple:#4A1D7E;        /* סגול עמוק - ראשי */
-    --brand-purple-deep:#3A1463;   /* סגול עמוק יותר */
+    /* === Official brand colors (per Branding Strategy book p.80) === */
+    --brand-purple:#5A2E8C;        /* סגול - ראשי · משדר ביטחון ומקצועיות */
+    --brand-purple-deep:#3F1F66;   /* סגול עמוק */
     --brand-purple-light:#A78EC9;  /* סגול בהיר */
     --brand-purple-soft:#EDE5F5;   /* סגול רקע */
-    --brand-teal:#2EAFB8;          /* טורקיז */
-    --brand-teal-soft:#D4EFF1;
-    --brand-orange:#F26B4F;        /* כתום */
-    --brand-orange-soft:#FCE0D9;
-    --brand-yellow:#F5C536;        /* צהוב */
-    --brand-yellow-soft:#FCF1CC;
+    --brand-teal:#1CA6A6;          /* תכלת · משדר תקווה וחזון */
+    --brand-teal-soft:#D2EEEE;
+    --brand-orange:#EA6A4C;        /* כתום · משדר אנרגיה, חום, אנושיות */
+    --brand-orange-soft:#FBE0D8;
+    --brand-yellow:#FFD455;        /* צהוב · משדר אופטימיות */
+    --brand-yellow-soft:#FFF3D0;
 
     --ink:#1A1230;
     --ink-soft:#4A3D5C;
@@ -130,13 +131,44 @@
     border-bottom:1px solid var(--line);
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:20px}
-  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .brand{display:flex;align-items:center;gap:14px;flex-shrink:0;text-decoration:none}
   .brand-logo{
-    width:50px;height:50px;flex-shrink:0;
+    height:54px;width:auto;flex-shrink:0;display:block;
   }
-  .brand-text{display:flex;flex-direction:column;line-height:1.05}
-  .brand-text strong{font-weight:800;font-size:1.1rem;color:var(--brand-purple)}
-  .brand-text span{font-size:.7rem;letter-spacing:.12em;color:var(--ink-soft);font-weight:500;margin-top:2px}
+  .brand-text{display:flex;flex-direction:column;line-height:1;gap:2px}
+  .brand-name{
+    font-family:'Rubik','Heebo',sans-serif;
+    font-weight:900;font-size:1.35rem;color:var(--brand-purple);
+    letter-spacing:-.01em;line-height:1;
+    position:relative;
+  }
+  .brand-name .dot{
+    display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:var(--brand-orange);
+    margin:0 1px;vertical-align:middle;transform:translateY(-12px);
+  }
+  .brand-tagline{
+    font-family:'Heebo',sans-serif;
+    font-size:.62rem;font-weight:600;color:var(--brand-purple);
+    letter-spacing:.04em;margin-top:1px;
+  }
+  .brand-sub{
+    display:flex;align-items:center;gap:6px;
+    font-family:'Rubik',sans-serif;
+    font-size:.72rem;font-weight:700;color:var(--brand-orange);
+    letter-spacing:.05em;margin-top:4px;
+    border-top:1px solid var(--line);padding-top:4px;
+  }
+  .brand-sub::before{
+    content:"";width:4px;height:4px;border-radius:50%;
+    background:var(--brand-orange);
+  }
+  @media (max-width:560px){
+    .brand-logo{height:42px;width:auto}
+    .brand-name{font-size:1.1rem}
+    .brand-tagline{font-size:.58rem}
+    .brand-sub{font-size:.65rem}
+  }
 
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{font-size:.95rem;font-weight:600;position:relative;padding:8px 0;color:var(--ink)}
@@ -586,21 +618,46 @@
     width:28px;height:28px;border-radius:50%;background:var(--brand-purple);
     color:#fff;display:grid;place-items:center;font-weight:900;font-size:.85rem;flex-shrink:0;
   }
+  .phone-wrap{position:relative;display:flex;justify-content:center;align-items:center;padding:20px 0}
   .phone-mock{
-    position:relative;max-width:280px;margin:0 auto;width:100%;
+    position:relative;max-width:340px;margin:0 auto;width:100%;
     aspect-ratio:9/18.5;
     background:var(--ink);
-    border-radius:38px;
-    padding:8px;
-    box-shadow:var(--shadow-lg);
+    border-radius:44px;
+    padding:10px;
+    box-shadow:0 40px 80px -25px rgba(74,29,126,.55), 0 20px 40px -15px rgba(0,0,0,.25);
+    transform:rotate(-2.5deg);
+    transition:transform .4s ease;
   }
+  .phone-mock:hover{transform:rotate(0deg) scale(1.02)}
   .phone-mock::before{
-    content:"";position:absolute;top:14px;right:50%;transform:translateX(50%);
-    width:80px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:3;
+    content:"";position:absolute;top:16px;right:50%;transform:translateX(50%);
+    width:96px;height:22px;background:var(--ink);border-radius:0 0 14px 14px;z-index:3;
   }
   .phone-screen{
     width:100%;height:100%;background:var(--bg);
-    border-radius:30px;overflow:hidden;
+    border-radius:34px;overflow:hidden;
+  }
+  .phone-badge{
+    position:absolute;top:-12px;right:-10px;z-index:5;
+    background:var(--brand-orange);color:#fff;
+    font-family:'Rubik',sans-serif;font-weight:800;font-size:.78rem;
+    padding:8px 14px;border-radius:999px;
+    box-shadow:0 8px 20px -6px rgba(242,107,79,.6);
+    transform:rotate(8deg);
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .phone-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+  @media (max-width:768px){
+    .phone-mock{max-width:300px;transform:rotate(0deg)}
+    .app-grid > div:first-child{order:1}
+    .app-grid > div:last-child{order:2}
+  }
+  @media (min-width:769px){
+    .phone-mock{max-width:360px}
+    .app-grid > div:first-child{order:2}
+    .app-grid > div:last-child{order:1}
   }
 
   /* ============================================
@@ -716,23 +773,38 @@
     position:relative;z-index:2;
   }
   .footer-brand-block{max-width:380px}
-  .footer-brand-block .brand-text strong{color:#fff}
-  .footer-brand-block .brand-text span{color:rgba(255,255,255,.6)}
+  .footer-brand-block .brand-name{color:#fff}
+  .footer-brand-block .brand-tagline{color:var(--brand-yellow)}
+  .footer-brand-block .brand-sub{color:var(--brand-yellow);border-top-color:rgba(255,255,255,.15)}
+  .footer-brand-block .brand-sub::before{background:var(--brand-yellow)}
   .footer-brand-block p{color:rgba(255,255,255,.7);font-size:.9rem;margin-top:14px;line-height:1.6}
 
   .footer-pillars{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px;
   }
   .footer-pillar{
-    display:flex;align-items:center;gap:10px;font-size:.82rem;color:#fff;font-weight:600;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:10px;padding:18px 12px;
+    background:rgba(255,255,255,.06);border-radius:16px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:all .3s ease;
   }
-  .footer-pillar .dot{
-    width:14px;height:14px;border-radius:4px;flex-shrink:0;
+  .footer-pillar:hover{
+    background:rgba(255,255,255,.12);transform:translateY(-3px);
+    border-color:rgba(255,255,255,.18);
   }
-  .footer-pillar:nth-child(1) .dot{background:var(--brand-teal)}
-  .footer-pillar:nth-child(2) .dot{background:var(--brand-yellow)}
-  .footer-pillar:nth-child(3) .dot{background:var(--brand-orange)}
-  .footer-pillar:nth-child(4) .dot{background:var(--brand-purple-light)}
+  .footer-pillar .pillar-icon{
+    width:54px;height:54px;flex-shrink:0;
+    display:grid;place-items:center;
+    background:rgba(255,255,255,.08);
+    border-radius:14px;
+    padding:8px;
+  }
+  .footer-pillar .pillar-icon svg{width:100%;height:100%;display:block}
+  .footer-pillar .pillar-text{
+    font-size:.85rem;color:#fff;font-weight:700;line-height:1.35;
+    font-family:'Rubik',sans-serif;
+  }
 
   .footer-col h4{
     font-family:'Rubik',sans-serif;font-weight:700;font-size:1rem;
@@ -837,19 +909,8 @@
 <!-- ============== NAV ============== -->
 <header class="nav">
   <div class="container nav-inner">
-    <a href="#" class="brand" aria-label="הורה ומיוחד · מימושים">
-      <svg class="brand-logo" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Logo inspired by prospectus marks -->
-        <rect x="4" y="22" width="9" height="22" rx="2" fill="#2EAFB8"/>
-        <rect x="16" y="14" width="9" height="30" rx="2" fill="#A78EC9"/>
-        <rect x="28" y="22" width="9" height="22" rx="2" fill="#FFFFFF" stroke="#4A1D7E" stroke-width="1.5"/>
-        <circle cx="20.5" cy="9" r="3.5" fill="#F26B4F"/>
-        <circle cx="32.5" cy="14" r="2.5" fill="#F5C536"/>
-      </svg>
-      <div class="brand-text">
-        <strong>הורה ומיוחד</strong>
-        <span>· מימושים ·</span>
-      </div>
+    <a href="#" class="brand" aria-label="הורה ומיוחד — ביחד אנחנו חזקים">
+      <img class="brand-logo" src="logo-horeh-umeyuhad.webp" alt="הורה ומיוחד — ביחד אנחנו חזקים">
     </a>
 
     <nav class="nav-links" aria-label="ניווט ראשי">
@@ -863,7 +924,7 @@
 
     <div class="nav-cta">
       <a href="https://ultra.kesherhk.info/external/paymentPage/310815" class="btn btn-ghost">תרומה 💙</a>
-      <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-primary">למיצוי זכויות</a>
+      <a href="#lead" class="btn btn-primary">למיצוי זכויות</a>
       <button class="menu-toggle" id="menuToggle" aria-label="פתח תפריט" aria-expanded="false">
         <span></span>
       </button>
@@ -879,7 +940,7 @@
   <a href="#tool">בודק זכאות</a>
   <a href="#testimonials">המלצות</a>
   <a href="#contact">צור קשר</a>
-  <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-primary btn-block">למיצוי זכויות עכשיו</a>
+  <a href="#lead" class="btn btn-primary btn-block">למיצוי זכויות עכשיו</a>
   <a href="https://ultra.kesherhk.info/external/paymentPage/310815" class="btn btn-yellow btn-block" style="margin-top:12px">תרומה לעמותה 💙</a>
 </div>
 
@@ -898,7 +959,7 @@
           עמותת <strong>"הורה ומיוחד"</strong> וחברת <strong>"מימושים"</strong> — מרכז של ידע, תמיכה והעצמה להורים לילדים המתמודדים עם קשיים ומוגבלויות. מיצוי זכויות, קהילה תומכת וקידום חקיקה למען עתיד טוב יותר.
         </p>
         <div class="hero-ctas">
-          <a href="https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93" class="btn btn-yellow">
+          <a href="#lead" class="btn btn-yellow">
             למיצוי זכויות עכשיו <span class="arrow">←</span>
           </a>
           <a href="#tool" class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3)">בודק הזכאות החכם</a>
@@ -1451,33 +1512,66 @@
             <div class="app-feat"><span class="dot">4</span><span>סכומי קצבאות עדכניים ל-2026</span></div>
             <div class="app-feat"><span class="dot">5</span><span>אופציה להמשך טיפול אצל מימושים</span></div>
           </div>
-          <a href="app.html" class="btn btn-primary">התחל בדיקה <span class="arrow">←</span></a>
+          <a href="router.html" class="btn btn-primary">התחל בדיקה <span class="arrow">←</span></a>
         </div>
 
-        <div>
+        <div class="phone-wrap">
           <div class="phone-mock" aria-hidden="true">
+            <span class="phone-badge">חינמי · ללא רישום</span>
             <div class="phone-screen">
               <svg viewBox="0 0 240 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+                <defs>
+                  <linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#F5C536"/>
+                    <stop offset="100%" stop-color="#F26B4F"/>
+                  </linearGradient>
+                  <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+                  </filter>
+                </defs>
+
+                <!-- Background -->
                 <rect width="240" height="480" fill="#FAFAFA"/>
-                <rect x="0" y="0" width="240" height="40" fill="#FAFAFA"/>
-                <text x="20" y="26" font-family="Heebo" font-size="11" fill="#1A1230">9:41</text>
-                <rect x="16" y="50" width="208" height="60" rx="14" fill="#4A1D7E"/>
-                <text x="120" y="78" text-anchor="middle" font-family="Rubik" font-size="14" font-weight="800" fill="#F5C536">בודק הזכאות</text>
-                <text x="120" y="98" text-anchor="middle" font-family="Heebo" font-size="9" fill="#FFFFFF" opacity=".7">שלב 3 מתוך 5</text>
-                <rect x="16" y="120" width="208" height="6" rx="3" fill="#EDE5F5"/>
-                <rect x="16" y="120" width="125" height="6" rx="3" fill="#F26B4F"/>
-                <text x="120" y="155" text-anchor="middle" font-family="Rubik" font-size="14" font-weight="700" fill="#1A1230">סוג הלקות?</text>
-                <rect x="16" y="175" width="208" height="46" rx="12" fill="#FFFFFF" stroke="#F5C536" stroke-width="2.5"/>
-                <text x="32" y="203" font-family="Heebo" font-size="11" fill="#1A1230" font-weight="600">לקות פיזית / מוטורית</text>
-                <circle cx="208" cy="198" r="6" fill="#F5C536"/>
-                <rect x="16" y="232" width="208" height="46" rx="12" fill="#FFFFFF" stroke="#EDE5F5"/>
-                <text x="32" y="260" font-family="Heebo" font-size="11" fill="#4A3D5C">לקות התפתחותית</text>
-                <rect x="16" y="289" width="208" height="46" rx="12" fill="#FFFFFF" stroke="#EDE5F5"/>
-                <text x="32" y="317" font-family="Heebo" font-size="11" fill="#4A3D5C">לקות חושית</text>
-                <rect x="16" y="346" width="208" height="46" rx="12" fill="#FFFFFF" stroke="#EDE5F5"/>
-                <text x="32" y="374" font-family="Heebo" font-size="11" fill="#4A3D5C">מצב רפואי כרוני</text>
-                <rect x="16" y="410" width="208" height="46" rx="14" fill="#4A1D7E"/>
-                <text x="120" y="438" text-anchor="middle" font-family="Heebo" font-size="12" font-weight="700" fill="#FFFFFF">המשך לשאלה הבאה ←</text>
+
+                <!-- Status bar -->
+                <text x="220" y="26" text-anchor="end" font-family="Heebo, Arial" font-size="10" font-weight="600" fill="#1A1230">9:41</text>
+                <circle cx="20" cy="22" r="3" fill="#1A1230"/>
+                <rect x="28" y="19" width="14" height="6" rx="1.5" fill="none" stroke="#1A1230" stroke-width="1"/>
+
+                <!-- Purple header card -->
+                <rect x="16" y="50" width="208" height="62" rx="16" fill="#4A1D7E"/>
+                <text x="120" y="78" text-anchor="middle" font-family="Rubik, Arial" font-size="15" font-weight="800" fill="#F5C536">בודק הזכאות</text>
+                <text x="120" y="98" text-anchor="middle" font-family="Heebo, Arial" font-size="9" font-weight="500" fill="#FFFFFF" opacity="0.75">שלב 3 מתוך 5</text>
+
+                <!-- Progress bar -->
+                <rect x="16" y="124" width="208" height="7" rx="3.5" fill="#EDE5F5"/>
+                <rect x="16" y="124" width="125" height="7" rx="3.5" fill="url(#progGrad)"/>
+
+                <!-- Question title -->
+                <text x="120" y="160" text-anchor="middle" font-family="Rubik, Arial" font-size="15" font-weight="800" fill="#1A1230">סוג הלקות?</text>
+
+                <!-- Selected option card (centered text) -->
+                <rect x="16" y="178" width="208" height="48" rx="13" fill="#FFFFFF" stroke="#F5C536" stroke-width="2.5" filter="url(#cardShadow)"/>
+                <text x="120" y="207" text-anchor="middle" font-family="Heebo, Arial" font-size="11" font-weight="700" fill="#1A1230">לקות פיזית / מוטורית</text>
+                <circle cx="34" cy="202" r="9" fill="#F5C536"/>
+                <path d="M30 202 L33 205 L38 199" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <!-- Other options (centered text) -->
+                <rect x="16" y="234" width="208" height="44" rx="12" fill="#FFFFFF" stroke="#EDE5F5" stroke-width="1.5" filter="url(#cardShadow)"/>
+                <text x="120" y="261" text-anchor="middle" font-family="Heebo, Arial" font-size="11" font-weight="500" fill="#4A3D5C">לקות התפתחותית</text>
+                <circle cx="34" cy="256" r="8" fill="none" stroke="#D8D0E8" stroke-width="1.5"/>
+
+                <rect x="16" y="286" width="208" height="44" rx="12" fill="#FFFFFF" stroke="#EDE5F5" stroke-width="1.5" filter="url(#cardShadow)"/>
+                <text x="120" y="313" text-anchor="middle" font-family="Heebo, Arial" font-size="11" font-weight="500" fill="#4A3D5C">לקות חושית</text>
+                <circle cx="34" cy="308" r="8" fill="none" stroke="#D8D0E8" stroke-width="1.5"/>
+
+                <rect x="16" y="338" width="208" height="44" rx="12" fill="#FFFFFF" stroke="#EDE5F5" stroke-width="1.5" filter="url(#cardShadow)"/>
+                <text x="120" y="365" text-anchor="middle" font-family="Heebo, Arial" font-size="11" font-weight="500" fill="#4A3D5C">מצב רפואי כרוני</text>
+                <circle cx="34" cy="360" r="8" fill="none" stroke="#D8D0E8" stroke-width="1.5"/>
+
+                <!-- CTA Button -->
+                <rect x="16" y="410" width="208" height="48" rx="24" fill="#4A1D7E"/>
+                <text x="120" y="440" text-anchor="middle" font-family="Heebo, Arial" font-size="12" font-weight="800" fill="#FFFFFF">המשך לשאלה הבאה ←</text>
               </svg>
             </div>
           </div>
@@ -1518,11 +1612,11 @@
               <!-- Smile -->
               <path d="M -10 -65 Q 0 -58 10 -65" stroke="#1A1230" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             </g>
-            <text x="200" y="420" text-anchor="middle" font-family="Rubik" font-size="14" font-weight="800" fill="#1A1230">— יהודה איינהורן, מייסד —</text>
+            <text x="200" y="420" text-anchor="middle" font-family="Rubik" font-size="14" font-weight="800" fill="#1A1230">— יהודה איינהורן, מנכ"ל —</text>
           </svg>
         </div>
         <div>
-          <span class="story-eyebrow">המייסד · הסיפור</span>
+          <span class="story-eyebrow">המנכ"ל · הסיפור</span>
           <h2>שמי יהודה איינהורן, <em>הסיפור שלנו</em></h2>
           <p>כאבא ליענקי המתוק המתמודד עם שיתוק מוחין, גיליתי על בשרי עד כמה מורכב עולם הנגישות והבירוקרטיה בתחום. מתוך הקושי האישי צמחה שליחות — להקים בית מקצועי, חם ויעיל להורים המתמודדים עם מצבים דומים.</p>
           <blockquote>"נכון, הילדים שלנו מיוחדים, יש להם צרכים מיוחדים שאין לילד רגיל — אבל על הדרך הם הפכו אותנו להורים מיוחדים."</blockquote>
@@ -1531,7 +1625,7 @@
             <div class="sig-mark">י.א</div>
             <div class="sig-text">
               <strong>יהודה איינהורן</strong>
-              <span>מייסד · בית שמש</span>
+              <span>מנכ"ל · בית שמש</span>
             </div>
           </div>
         </div>
@@ -1662,7 +1756,7 @@
           <div class="icon">💬</div>
           <div>
             <strong>וואטסאפ</strong>
-            <a href="https://api.whatsapp.com/send?phone=972527131797&text=היי,%20אני%20מעוניין%20במידע%20נוסף">לחצו לפתיחת שיחה ←</a>
+            <a href="https://api.whatsapp.com/send?phone=97225023456&text=היי,%20אני%20מעוניין%20במידע%20נוסף">לחצו לפתיחת שיחה ←</a>
           </div>
         </div>
       </div>
@@ -1702,24 +1796,56 @@
     <div class="footer-grid">
       <div class="footer-brand-block">
         <div class="brand">
-          <svg class="brand-logo" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="22" width="9" height="22" rx="2" fill="#2EAFB8"/>
-            <rect x="16" y="14" width="9" height="30" rx="2" fill="#A78EC9"/>
-            <rect x="28" y="22" width="9" height="22" rx="2" fill="#FFFFFF" stroke="#F5C536" stroke-width="1.5"/>
-            <circle cx="20.5" cy="9" r="3.5" fill="#F26B4F"/>
-            <circle cx="32.5" cy="14" r="2.5" fill="#F5C536"/>
-          </svg>
-          <div class="brand-text">
-            <strong>הורה ומיוחד</strong>
-            <span>· מימושים ·</span>
-          </div>
+          <img class="brand-logo" src="logo-horeh-umeyuhad.webp" alt="הורה ומיוחד — ביחד אנחנו חזקים" style="filter:brightness(0) invert(1);height:64px">
         </div>
         <p>הבית של הורי העל. מרכז של ידע, תמיכה והעצמה למשפחות עם ילדים בעלי צרכים מיוחדים.<br>ע״ר 580715282 · ביחד אנחנו חזקים.</p>
         <div class="footer-pillars">
-          <div class="footer-pillar"><span class="dot"></span>ליווי יד ביד</div>
-          <div class="footer-pillar"><span class="dot"></span>ידע וניסיון</div>
-          <div class="footer-pillar"><span class="dot"></span>מקצועיות ומסירות</div>
-          <div class="footer-pillar"><span class="dot"></span>קידום יעיל ומהיר</div>
+          <!-- 1. קידום יעיל ומהיר -->
+          <div class="footer-pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="26" width="28" height="11" rx="3.5" fill="#5A2E8C"/>
+                <rect x="20" y="38" width="22" height="11" rx="3.5" fill="#5A2E8C"/>
+                <circle cx="42" cy="22" r="7" fill="#EA6A4C"/>
+              </svg>
+            </div>
+            <span class="pillar-text">קידום<br>יעיל ומהיר</span>
+          </div>
+
+          <!-- 2. מקצועיות ומסירות -->
+          <div class="footer-pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 28 L24 40 L46 18" stroke="#5A2E8C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle cx="46" cy="14" r="6" fill="#1CA6A6"/>
+              </svg>
+            </div>
+            <span class="pillar-text">מקצועיות<br>ומסירות</span>
+          </div>
+
+          <!-- 3. ידע וניסיון -->
+          <div class="footer-pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="10" y="32" width="13" height="18" rx="3" fill="#5A2E8C"/>
+                <rect x="28" y="20" width="13" height="30" rx="3" fill="#5A2E8C"/>
+                <circle cx="34.5" cy="12" r="6" fill="#EA6A4C"/>
+              </svg>
+            </div>
+            <span class="pillar-text">ידע<br>וניסיון</span>
+          </div>
+
+          <!-- 4. ליווי יד ביד -->
+          <div class="footer-pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="6" y="30" width="16" height="16" rx="3" transform="rotate(45 14 38)" fill="#5A2E8C"/>
+                <rect x="34" y="30" width="16" height="16" rx="3" transform="rotate(45 42 38)" fill="#5A2E8C"/>
+                <circle cx="28" cy="14" r="6" fill="#A78EC9"/>
+              </svg>
+            </div>
+            <span class="pillar-text">ליווי<br>יד ביד</span>
+          </div>
         </div>
       </div>
 
@@ -1756,14 +1882,25 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <span>© 2026 הורה ומיוחד ומימושים — כל הזכויות שמורות</span>
-      <span>הזכות שלך, הכוח שלנו 💜</span>
+    <div class="footer-bottom" style="flex-direction:column;align-items:stretch;gap:18px">
+      <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:14px 18px;font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.7)">
+        <strong style="color:var(--brand-yellow);display:block;margin-bottom:6px">⚠️ הבהרה משפטית · ט.ל.ח</strong>
+        כל המידע, המחשבונים והסכומים המוצגים באתר זה הם לצורכי הכוונה כללית בלבד ואינם מהווים ייעוץ משפטי, רפואי, כלכלי או מקצועי. הזכאות בפועל נקבעת אך ורק על ידי הגופים המוסמכים (המוסד לביטוח לאומי, משרדי הממשלה, רשויות מקומיות וקופות חולים) בכפוף לחוקים, תקנות, ועדות ובדיקות. הסכומים והתעריפים עדכניים נכון לתאריך פרסום בלבד. החברה, בעליה ומפעיליה לא יישאו באחריות לכל נזק, ישיר או עקיף, שייגרם משימוש או הסתמכות על המידע. לאימות מידע ולפעולות יש לפנות ישירות למוסד לביטוח לאומי (8809*) או לאיש מקצוע מוסמך.
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
+        <span>© 2026 הורה ומיוחד ומימושים — כל הזכויות שמורות · ט.ל.ח</span>
+        <span style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#legal-takanon" onclick="document.getElementById('legalModal').style.display='flex';document.getElementById('legalTitle').textContent='תקנון ותנאי שימוש';document.getElementById('legalBody').innerHTML=window.LEGAL_TEXTS.takanon;return false" style="color:var(--brand-yellow)">תקנון</a>
+          <a href="#legal-privacy" onclick="document.getElementById('legalModal').style.display='flex';document.getElementById('legalTitle').textContent='מדיניות פרטיות';document.getElementById('legalBody').innerHTML=window.LEGAL_TEXTS.privacy;return false" style="color:var(--brand-yellow)">מדיניות פרטיות</a>
+          <a href="#legal-a11y" onclick="document.getElementById('legalModal').style.display='flex';document.getElementById('legalTitle').textContent='הצהרת נגישות';document.getElementById('legalBody').innerHTML=window.LEGAL_TEXTS.a11y;return false" style="color:var(--brand-yellow)">הצהרת נגישות</a>
+        </span>
+        <span>הזכות שלך, הכוח שלנו 💜</span>
+      </div>
     </div>
   </div>
 </footer>
 
-<a href="https://api.whatsapp.com/send?phone=972527131797&text=היי,%20אני%20מעוניין%20במידע%20נוסף" class="fab" aria-label="פתח וואטסאפ">
+<a href="https://api.whatsapp.com/send?phone=97225023456&text=היי,%20אני%20מעוניין%20במידע%20נוסף" class="fab" aria-label="פתח וואטסאפ">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
 </a>
 
@@ -1797,12 +1934,219 @@
     e.preventDefault();
     const data = new FormData(e.target);
     const text = `שם: ${data.get('name')}%0Aטלפון: ${data.get('phone')}%0Aהודעה: ${data.get('message')}`;
-    window.open(`https://api.whatsapp.com/send?phone=972527131797&text=${text}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=97225023456&text=${text}`, '_blank');
   }
 </script>
-  <script>
-nl_pos = "br";
+
+<!-- ============== ACCESSIBILITY WIDGET ============== -->
+<style>
+  .a11y-fab{position:fixed;bottom:20px;right:20px;z-index:9998;width:58px;height:58px;border-radius:50%;background:#1559a8;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.4);font-size:1.8rem;cursor:pointer;border:3px solid #fff;transition:transform .25s}
+  .a11y-fab:hover{transform:scale(1.08)}
+  .a11y-fab:focus-visible{outline:3px solid #F5C536;outline-offset:3px}
+  .a11y-panel{position:fixed;top:0;right:-380px;width:360px;max-width:92vw;height:100vh;background:#fff;z-index:9999;box-shadow:-10px 0 40px -10px rgba(0,0,0,.3);transition:right .35s ease;overflow-y:auto;font-family:'Heebo',sans-serif;direction:rtl}
+  .a11y-panel.open{right:0}
+  .a11y-panel-head{background:#1559a8;color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:2}
+  .a11y-panel-head h3{font-size:1.1rem;font-weight:800;margin:0}
+  .a11y-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+  .a11y-body{padding:18px 16px}
+  .a11y-group{margin-bottom:18px}
+  .a11y-group-title{font-size:.78rem;font-weight:800;color:#555;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+  .a11y-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .a11y-btn{padding:10px 8px;border:2px solid #ddd;background:#f8f8f8;border-radius:10px;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:600;color:#222;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1.2}
+  .a11y-btn:hover{border-color:#1559a8;background:#fff}
+  .a11y-btn.active{border-color:#1559a8;background:#e6efff;color:#1559a8}
+  .a11y-btn .ico{font-size:1.2rem}
+  .a11y-reset{width:100%;padding:12px;background:#dc3545;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:10px}
+  .a11y-statement{background:#f0f4f9;border-radius:10px;padding:12px 14px;font-size:.78rem;line-height:1.6;color:#444;margin-top:12px}
+  .a11y-statement a{color:#1559a8;font-weight:700}
+  /* Applied modes */
+  body.a11y-font-lg{font-size:115%!important}
+  body.a11y-font-xl{font-size:130%!important}
+  body.a11y-contrast{filter:contrast(1.4)!important}
+  body.a11y-dark{filter:invert(1) hue-rotate(180deg)!important}
+  body.a11y-dark img,body.a11y-dark svg,body.a11y-dark video{filter:invert(1) hue-rotate(180deg)}
+  body.a11y-mono{filter:grayscale(1)!important}
+  body.a11y-links a{text-decoration:underline!important;outline:1px dashed currentColor;outline-offset:2px}
+  body.a11y-readable,body.a11y-readable *{font-family:Arial,sans-serif!important;letter-spacing:.02em}
+  body.a11y-spacing,body.a11y-spacing *{line-height:1.9!important;word-spacing:.15em}
+  body.a11y-noanim,body.a11y-noanim *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  body.a11y-bigcursor,body.a11y-bigcursor *{cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M2 2l14 36 6-16 16-6z" fill="black" stroke="white" stroke-width="3"/></svg>') 4 4,auto!important}
+</style>
+
+<button class="a11y-fab" id="a11yFab" aria-label="פתח תפריט נגישות" title="תפריט נגישות">♿</button>
+
+<aside class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות" aria-hidden="true">
+  <div class="a11y-panel-head">
+    <h3>♿ הגדרות נגישות</h3>
+    <button class="a11y-close" id="a11yClose" aria-label="סגור">✕</button>
+  </div>
+  <div class="a11y-body">
+    <div class="a11y-group">
+      <div class="a11y-group-title">🔍 גודל טקסט</div>
+      <div class="a11y-btns" style="grid-template-columns:1fr 1fr 1fr">
+        <button class="a11y-btn" data-toggle="font" data-val="normal"><span class="ico">A</span><span>רגיל</span></button>
+        <button class="a11y-btn" data-toggle="font" data-val="lg"><span class="ico">A+</span><span>גדול</span></button>
+        <button class="a11y-btn" data-toggle="font" data-val="xl"><span class="ico">A++</span><span>ענק</span></button>
+      </div>
+    </div>
+    <div class="a11y-group">
+      <div class="a11y-group-title">🎨 ניגודיות וצבע</div>
+      <div class="a11y-btns">
+        <button class="a11y-btn" data-toggle="contrast"><span class="ico">⚡</span><span>ניגודיות גבוהה</span></button>
+        <button class="a11y-btn" data-toggle="dark"><span class="ico">🌙</span><span>מצב כהה</span></button>
+        <button class="a11y-btn" data-toggle="mono"><span class="ico">⚫</span><span>שחור-לבן</span></button>
+        <button class="a11y-btn" data-toggle="links"><span class="ico">🔗</span><span>הדגשת קישורים</span></button>
+      </div>
+    </div>
+    <div class="a11y-group">
+      <div class="a11y-group-title">📖 קריאות</div>
+      <div class="a11y-btns">
+        <button class="a11y-btn" data-toggle="readable"><span class="ico">🔤</span><span>גופן קריא</span></button>
+        <button class="a11y-btn" data-toggle="spacing"><span class="ico">📐</span><span>ריווח שורות</span></button>
+        <button class="a11y-btn" data-toggle="noanim"><span class="ico">🛑</span><span>עצירת אנימציות</span></button>
+        <button class="a11y-btn" data-toggle="bigcursor"><span class="ico">🖱️</span><span>סמן גדול</span></button>
+      </div>
+    </div>
+    <button class="a11y-reset" id="a11yReset">🔙 איפוס כל ההגדרות</button>
+    <div class="a11y-statement">
+      <strong>הצהרת נגישות:</strong> אתר זה הונגש לפי תקן ישראלי 5568 (WCAG 2.1 AA). למידע נוסף, לבעיה או הצעת שיפור — <a href="#" onclick="document.getElementById('legalModal').style.display='flex';document.getElementById('legalTitle').textContent='הצהרת נגישות';document.getElementById('legalBody').innerHTML=window.LEGAL_TEXTS.a11y;return false">קרא את ההצהרה המלאה</a> או צרו קשר: <a href="tel:02-5023456">02-5023456</a> / <a href="mailto:o@ho-me.org.il">o@ho-me.org.il</a>
+    </div>
+  </div>
+</aside>
+
+<!-- ============== LEGAL MODAL ============== -->
+<style>
+  .legal-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:10000;align-items:center;justify-content:center;padding:20px;direction:rtl;font-family:'Heebo',sans-serif}
+  .legal-box{background:#fff;border-radius:18px;max-width:680px;width:100%;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+  .legal-head{background:#4A1D7E;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+  .legal-head h2{margin:0;font-family:'Rubik',sans-serif;font-weight:800;font-size:1.2rem;color:#fff}
+  .legal-head button{background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+  .legal-body{padding:24px;overflow-y:auto;line-height:1.75;color:#1A1230;font-size:.92rem}
+  .legal-body h3{font-family:'Rubik',sans-serif;font-weight:800;color:#4A1D7E;font-size:1rem;margin:18px 0 8px}
+  .legal-body p,.legal-body li{margin-bottom:8px}
+  .legal-body ul{padding-right:20px;margin-bottom:10px}
+  .legal-body strong{color:#F26B4F}
+</style>
+
+<div class="legal-modal" id="legalModal" onclick="if(event.target===this)this.style.display='none'" role="dialog" aria-modal="true">
+  <div class="legal-box">
+    <div class="legal-head">
+      <h2 id="legalTitle">תקנון</h2>
+      <button onclick="document.getElementById('legalModal').style.display='none'" aria-label="סגור">✕</button>
+    </div>
+    <div class="legal-body" id="legalBody"></div>
+  </div>
+</div>
+
+<script>
+window.LEGAL_TEXTS = {
+  takanon: `
+    <h3>1. כללי</h3>
+    <p>השימוש באתר "הורה ומיוחד" / "מימושים" (להלן: "האתר") כפוף לתקנון זה. עצם השימוש מהווה הסכמה לתנאיו במלואם. אם אינך מסכים — אנא הימנע משימוש.</p>
+    <h3>2. אופי המידע</h3>
+    <p>כל המידע, המחשבונים, הסכומים והכלים באתר מוצגים <strong>לצורכי הכוונה כללית בלבד</strong> ואינם מהווים ייעוץ משפטי, רפואי, כלכלי, פיננסי, סוציאלי או מקצועי מכל סוג. הם אינם תחליף לייעוץ פרטני אצל איש מקצוע מוסמך, ואינם יוצרים יחסי לקוח-נותן שירות.</p>
+    <h3>3. דיוק ועדכניות</h3>
+    <p>בעלי האתר עושים מאמץ סביר לעדכן את המידע, אך אינם מתחייבים כי המידע מדויק, שלם, עדכני או מתאים למצב הספציפי של המשתמש. סכומי קצבאות והטבות עשויים להשתנות בכל עת על ידי הגופים המוסמכים ללא הודעה מוקדמת. <strong>ט.ל.ח</strong> (טעות לעולם חוזרת).</p>
+    <h3>4. פטור מאחריות</h3>
+    <p>החברה, בעליה, מנהליה, עובדיה וספקיה לא יישאו באחריות כלשהי לכל נזק, ישיר או עקיף, ממוני או לא-ממוני, גופני, נפשי או רכושי, שייגרם למשתמש או לצד ג' כתוצאה מהשימוש או מהסתמכות על המידע באתר, לרבות (אך לא רק):</p>
+    <ul><li>אי-קבלת זכאות, דחייה או שלילה של קצבה</li><li>פספוס מועדי הגשה או ערעור</li><li>החלטות של גופים מוסמכים</li><li>עיכובים, תקלות טכניות או הפסקות בשירות</li><li>טעויות, חוסר עדכניות או אי-דיוקים במידע</li></ul>
+    <h3>5. קניין רוחני</h3>
+    <p>כל הזכויות באתר, בעיצוב, בתכנים, בקוד ובמחשבונים שמורות לבעלים. אסור להעתיק, לשכפל, להפיץ, לפרסם או לעשות שימוש מסחרי במידע ללא אישור בכתב.</p>
+    <h3>6. שינויים</h3>
+    <p>בעלי האתר רשאים לשנות תקנון זה בכל עת. השינוי ייכנס לתוקף עם פרסומו באתר.</p>
+    <h3>7. דין וסמכות שיפוט</h3>
+    <p>על תקנון זה יחולו דיני מדינת ישראל בלבד. סמכות השיפוט הבלעדית נתונה לבתי המשפט המוסמכים במחוז ירושלים.</p>
+    <h3>8. יצירת קשר</h3>
+    <p>הורה ומיוחד / מימושים · בית שמש · 02-5023456 · o@ho-me.org.il</p>
+  `,
+  privacy: `
+    <h3>1. איזה מידע נאסף</h3>
+    <p>באתר נאספים אך ורק נתונים שאתם בוחרים להזין באופן יזום (שם מלא, מספר טלפון, כתובת אימייל ופרטי הפנייה). תשובות המחשבונים לא נשמרות בשרתי האתר ולא מועברות אלינו אלא אם תבחרו להעבירן (למשל באמצעות וואטסאפ או טופס "השאירו פרטים").</p>
+    <h3>2. שימוש במידע</h3>
+    <p>הפרטים שתעבירו ישמשו אך ורק למטרת יצירת קשר אישית עם נציג השירות שלנו לצורך בירור זכויותיכם וליווי בתהליכי מימוש מול הגופים הרלוונטיים.</p>
+    <h3>3. אחסון ואבטחה</h3>
+    <p>המידע נשמר במערכת CRM ייעודית (Kaveret) המאובטחת בסטנדרטים מקובלים. אנו נוקטים אמצעים סבירים להגנה על המידע אך אין הגנה מוחלטת.</p>
+    <h3>4. אי-העברה לצדדים שלישיים</h3>
+    <p>לא נעביר את המידע לצד שלישי כלשהו, למעט אם נידרש לכך על פי דין או צו שיפוטי, או במקרה של מכירת פעילות.</p>
+    <h3>5. דיוור ומסרים פרסומיים</h3>
+    <p>בהתאם לחוק התקשורת (תיקון 40), משלוח דיוור פרסומי ייעשה רק לאחר קבלת הסכמה מפורשת. ניתן להסיר את עצמכם מרשימת התפוצה בכל עת באמצעות פנייה ל-o@ho-me.org.il.</p>
+    <h3>6. עוגיות (Cookies)</h3>
+    <p>האתר עשוי להשתמש בעוגיות פונקציונליות (זיכרון הגדרות נגישות וכד'). אין שימוש בעוגיות שיווקיות / Tracking.</p>
+    <h3>7. זכויות המשתמש</h3>
+    <p>בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, עומדות לכם הזכויות לעיון במידע אודותיכם, לתיקונו או למחיקתו. לבקשה — פנו ל-o@ho-me.org.il.</p>
+    <h3>8. שאלות</h3>
+    <p>בכל שאלה בנושאי פרטיות: o@ho-me.org.il · 02-5023456</p>
+  `,
+  a11y: `
+    <h3>מחויבותנו לנגישות</h3>
+    <p>אנו מאמינים שהאינטרנט צריך להיות נגיש לכולם. אתר זה הונגש בהתאם ל<strong>תקן ישראלי 5568</strong> (המבוסס על WCAG 2.1) ברמת AA, ובהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998 ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.</p>
+    <h3>אמצעי נגישות באתר</h3>
+    <ul>
+      <li>תפריט נגישות מובנה (כפתור ♿ בפינה השמאלית-תחתונה)</li>
+      <li>הגדלת והקטנת טקסט ב-3 רמות</li>
+      <li>מצבי ניגודיות גבוהה, מצב כהה ושחור-לבן</li>
+      <li>הדגשת קישורים, גופן קריא, ריווח שורות מוגבר</li>
+      <li>עצירת אנימציות וסמן עכבר מוגדל</li>
+      <li>תאימות לקוראי מסך (NVDA, JAWS, VoiceOver) ולניווט מקלדת מלא</li>
+      <li>טקסט חלופי לתמונות, מבנה כותרות סמנטי, ARIA labels</li>
+      <li>ניווט במקלדת בלבד (Tab / Shift+Tab / Enter / Space)</li>
+    </ul>
+    <h3>חלקים שאינם נגישים</h3>
+    <p>למיטב הבנתנו, האתר נגיש במלואו. אם נתקלת בבעיית נגישות, נשמח שתעדכנו אותנו כדי שנוכל לתקנה במהירות.</p>
+    <h3>רכז נגישות</h3>
+    <p><strong>שם:</strong> יהודה איינהורן<br>
+    <strong>טלפון:</strong> <a href="tel:02-5023456">02-5023456</a><br>
+    <strong>אימייל:</strong> <a href="mailto:o@ho-me.org.il">o@ho-me.org.il</a></p>
+    <h3>אופן הגשת תלונה</h3>
+    <p>אם נתקלתם בבעיית נגישות, נשמח שתפנו אלינו ונטפל בה בהקדם. במקרה של אי-מענה תוך 45 ימים, ניתן לפנות לנציבות שוויון זכויות לאנשים עם מוגבלות במשרד המשפטים: <a href="https://www.gov.il/he/departments/equal_rights_for_persons_with_disabilities" target="_blank">מעבר לנציבות</a></p>
+    <p style="font-size:.78rem;color:#666;margin-top:14px">תאריך עדכון הצהרה אחרון: 17.05.2026</p>
+  `
+};
+
+(function(){
+  const fab = document.getElementById('a11yFab');
+  const panel = document.getElementById('a11yPanel');
+  const close = document.getElementById('a11yClose');
+  const reset = document.getElementById('a11yReset');
+  const TOGGLES = ['contrast','dark','mono','links','readable','spacing','noanim','bigcursor'];
+  const FONT_SIZES = ['normal','lg','xl'];
+
+  function applyState(){
+    const s = JSON.parse(localStorage.getItem('a11y') || '{}');
+    TOGGLES.forEach(t => document.body.classList.toggle('a11y-'+t, !!s[t]));
+    FONT_SIZES.forEach(f => document.body.classList.toggle('a11y-font-'+f, s.font===f));
+    document.querySelectorAll('.a11y-btn').forEach(btn => {
+      const t = btn.dataset.toggle, v = btn.dataset.val;
+      if(t==='font'){ btn.classList.toggle('active', s.font === v || (!s.font && v==='normal')); }
+      else { btn.classList.toggle('active', !!s[t]); }
+    });
+  }
+
+  fab.addEventListener('click', () => { panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); });
+  close.addEventListener('click', () => { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && panel.classList.contains('open')){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); } });
+
+  document.querySelectorAll('.a11y-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = JSON.parse(localStorage.getItem('a11y') || '{}');
+      const t = btn.dataset.toggle, v = btn.dataset.val;
+      if(t==='font'){ s.font = v; } else { s[t] = !s[t]; }
+      localStorage.setItem('a11y', JSON.stringify(s));
+      applyState();
+    });
+  });
+  reset.addEventListener('click', () => { localStorage.removeItem('a11y'); applyState(); });
+  applyState();
+})();
 </script>
-<script src="https://specialsparents1.vercel.app/nagishli_v2.3_rev050920191652/nagishli.js?v=2.3" charset="utf-8" defer></script>
+
+<!-- ============== מרכז קישורי "השארת פרטים" ============== -->
+<!-- כל קישור עם href="#lead" באתר יעודכן אוטומטית ל-LEAD_URL.
+     כשתצא מערכת ה-CRM החדשה — מחליפים רק את השורה הזו ומפעילים בכל האתר. -->
+<script>
+  window.LEAD_URL = "https://cloud.kaveret.biz/contact-forms/9452/%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%9E%D7%99%D7%95%D7%97%D7%93"; // TODO: להחליף ל-URL של ה-CRM החדש
+  document.querySelectorAll('a[href="#lead"]').forEach(a => { a.href = window.LEAD_URL; });
+</script>
+
 </body>
 </html>
